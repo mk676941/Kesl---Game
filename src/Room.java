@@ -17,7 +17,7 @@ public class Room {
     private String requiredItemId;
     private String requiredFlagId; //TODO v Game je potreba ulozit stav flag
 
-    private String taskId;
+    private String taskId; //TODO vytvorit tridu Task a v ni mapu s tasky
 
     public Room(String id, String name, String description) {
         this.id = id;
