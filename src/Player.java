@@ -10,12 +10,10 @@ public class Player {
         this.inventory = new HashMap<String, Item>();
     }
 
+    //TODO dopsat metody
     public boolean addItem(Item item) {}
-
     public Item removeItem(String itemId) {}
-
     public boolean hasItem(String itemId){}
-
     public boolean isInventoryFull(){}
 
     public Map<String, Item> getInventory() {
