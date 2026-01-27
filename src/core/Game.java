@@ -11,7 +11,7 @@ public class Game {
         this.commands = new HashMap<>();
     }
 
-    public void registerCommands () {
+    public void registerCommands() {
         commands.put("go", new GoCommand(this));
         commands.put("use", new UseCommand(this));
         commands.put("take", new TakeCommand(this));
