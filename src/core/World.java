@@ -1,4 +1,4 @@
-package game.core;
+package core;
 
 public class World {
 

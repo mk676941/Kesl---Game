@@ -1,5 +1,5 @@
-package game.commands;
-import game.core.Game;
+package commands;
+import core.Game;
 
 public class ExploreCommand implements Command {
 

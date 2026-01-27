@@ -1,4 +1,4 @@
-package game.core;
+package core;
 
 public enum QuestState {
     NOT_STARTED,

@@ -1,6 +1,5 @@
-package game.commands;
-import game.core.Game;
-
+package commands;
+import core.Game;
 public class GoCommand implements Command {
 
     private Game game;
