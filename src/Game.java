@@ -19,5 +19,15 @@ public class Game {
         commands.put("exit", new ExitCommand(this));
     }
 
+    public void StartCommands(String key) {
+        String[] parts = key.split(" ");
+        String commandKey = parts[0];
 
+        Command command = commands.get(parts[0]);
+
+        if (command == null) {
+            System.out.println("invlaid input");
+        }
+        command.execute(parts);
+    }
 }
