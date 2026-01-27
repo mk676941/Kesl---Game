@@ -1,4 +1,4 @@
-package cz.game.core;
+package game.core;
 
 public class Item {
     private String id;

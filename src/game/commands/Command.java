@@ -1,4 +1,4 @@
-package cz.game.commands;
+package game.commands;
 
 public interface Command {
     void execute(String[] args);

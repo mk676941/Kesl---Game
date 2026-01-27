@@ -1,4 +1,4 @@
-package cz.game.core;
+package game.core;
 
 public class Main {
     public static void main(String[] args) {

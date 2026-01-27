@@ -1,4 +1,4 @@
-package cz.game.core;
+package game.core;
 
 import java.util.HashMap;
 import java.util.Map;

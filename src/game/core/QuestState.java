@@ -1,4 +1,4 @@
-package cz.game.core;
+package game.core;
 
 public enum QuestState {
     NOT_STARTED,

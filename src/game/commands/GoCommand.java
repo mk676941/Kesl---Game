@@ -1,5 +1,5 @@
-package cz.game.commands;
-import cz.game.core.Game;
+package game.commands;
+import game.core.Game;
 
 public class GoCommand implements Command {
 
