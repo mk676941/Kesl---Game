@@ -1,3 +1,5 @@
+package cz.game.core;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class Room {
 
     private boolean blocked;
     private String requiredItemId;
-    private String requiredFlagId; //TODO v Game je potreba ulozit stav flag
+    private String requiredFlagId; //TODO v cz.game.core.Game je potreba ulozit stav flag
 
     private String taskId; //TODO vytvorit tridu Task a v ni mapu s tasky
 

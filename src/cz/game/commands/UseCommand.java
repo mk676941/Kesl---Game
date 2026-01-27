@@ -1,3 +1,6 @@
+package cz.game.commands;
+import cz.game.core.Game;
+
 public class UseCommand implements Command {
 
     private Game game;

@@ -1,4 +1,7 @@
-public class GoCommand implements Command{
+package cz.game.commands;
+import cz.game.core.Game;
+
+public class GoCommand implements Command {
 
     private Game game;
 

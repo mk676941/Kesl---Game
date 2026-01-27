@@ -1,3 +1,7 @@
+package cz.game.core;
+
+import cz.game.commands.*;
+
 import java.util.HashMap;
 import java.util.Map;
 

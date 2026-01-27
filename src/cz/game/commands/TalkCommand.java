@@ -1,3 +1,6 @@
+package cz.game.commands;
+import cz.game.core.Game;
+
 public class TalkCommand implements Command {
 
     private Game game;
