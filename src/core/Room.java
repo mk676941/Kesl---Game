@@ -17,60 +17,86 @@ public class Room {
 
     private boolean blocked;
     private String requiredItemId;
-    private String requiredFlagId; //TODO v cz.game.core.Game je potreba ulozit stav flag
-
-    private String taskId; //TODO vytvorit tridu Task a v ni mapu s tasky
 
     public Room(String id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
+
         this.exits = new HashMap<String, Room>();
         this.items = new HashMap<String, Item>();
         this.npcs = new HashMap<String, NPC>();
+
         this.explored = false;
         this.blocked = false;
-        this.requiredItemId = null;
-        this.requiredFlagId = null;
-        this.taskId = null;
     }
 
+    //info
     public String getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public String getDescription() {
         return description;
     }
 
-    //TODO dopsat metody
-    public void addExit(String key, Room room) {}
-    public Room getExit(String key) {}
+    //exits management
+    public void addExit(String direction, Room room) {
+        exits.put(direction, room);
+    }
+    public Room getExit(String direction) {
+        return exits.get(direction);
+    }
+    public Map<String, Room> getExits() {
+        return exits;
+    }
 
-    public boolean isExplored() {}
-    public void explore() {}
+    //exploreing
+    public void explore() {
+        this.explored = true;
+    }
+    public boolean isExplored() {
+        return explored;
+    }
 
-    public boolean addItem(Item item) {}
-    public Item removeItem(String itemId) {}
-    public boolean hasItem(String itemId) {}
+    //items management
+    public boolean addItem(Item item) {
+        items.put(item.getId(), item);
+        return true;
+    }
+    public Item removeItem(String itemId) {
+        return items.remove(itemId);
+    }
+    public boolean hasItem(String itemId) {
+        return items.containsKey(itemId);
+    }
 
-    public boolean addNpc(NPC npc) {}
-    public NPC getNpc(String npcId) {}
-    public boolean hasNpc(String npcId) {}
+    //npcs management
+    public boolean addNpc(NPC npc) {
+        npcs.put(npc.getId(), npc);
+        return true;
+    }
+    public NPC getNpc(String npcId) {
+        return npcs.get(npcId);
+    }
+    public boolean hasNpc(String npcId) {
+        return npcs.containsKey(npcId);
+    }
 
-    public boolean isBlocked() {}
-    public void setBlocked(boolean blocked) {}
+    //enter requiraments
+    public boolean isBlocked() {
+        return blocked;
+    }
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
 
-    public String getRequiredItemId() {}
-    public void setRequiredItemId(String itemId) {}
-
-    public String getRequiredFlagId() {}
-    public void setRequiredFlagId(String flagId) {}
-
-    public String getTaskId() {}
-    public void setTaskId(String taskId) {}
+    public String getRequiredItemId() {
+        return requiredItemId;
+    }
+    public void setRequiredItemId(String itemId) {
+        requiredItemId = itemId;
+    }
 }

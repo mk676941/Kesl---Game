@@ -12,6 +12,7 @@ public class Player {
         this.inventory = new HashMap<String, Item>();
     }
 
+    //items management
     public boolean addItem(Item item) {
         if (isInventoryFull()) {
             return false;
@@ -20,23 +21,20 @@ public class Player {
         }
         return true;
     }
-
     public Item removeItem(String itemId) {
         return inventory.remove(itemId);
     }
-
     public boolean hasItem(String itemId){
         return inventory.containsKey(itemId);
     }
 
+    //inventory
     public boolean isInventoryFull(){
         return inventory.size() == capacity;
     }
-
     public Map<String, Item> getInventory() {
         return inventory;
     }
-
     public int getCapacity() {
         return capacity;
     }

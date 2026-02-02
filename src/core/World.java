@@ -11,10 +11,10 @@ public class World {
         this.rooms = new HashMap<>();
     }
 
+    //rooms management
     public void addRoom(Room room) {
         rooms.put(room.getId(), room);
     }
-
     public Room getRoom(String id) {
         return rooms.get(id);
     }
@@ -26,7 +26,6 @@ public class World {
     public void setStartRoom(Room room) {
         this.startRoom = room;
     }
-
     public Room getStartRoom() {
         return startRoom;
     }
