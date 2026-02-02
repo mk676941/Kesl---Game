@@ -12,11 +12,26 @@ public class Player {
         this.inventory = new HashMap<String, Item>();
     }
 
-    //TODO dopsat metody
-    public boolean addItem(Item item) {}
-    public Item removeItem(String itemId) {}
-    public boolean hasItem(String itemId){}
-    public boolean isInventoryFull(){}
+    public boolean addItem(Item item) {
+        if (isInventoryFull()) {
+            return false;
+        } else {
+            inventory.put(item.getId(), item);
+        }
+        return true;
+    }
+
+    public Item removeItem(String itemId) {
+        return inventory.remove(itemId);
+    }
+
+    public boolean hasItem(String itemId){
+        return inventory.containsKey(itemId);
+    }
+
+    public boolean isInventoryFull(){
+        return inventory.size() == capacity;
+    }
 
     public Map<String, Item> getInventory() {
         return inventory;

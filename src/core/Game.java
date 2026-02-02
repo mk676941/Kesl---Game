@@ -3,12 +3,17 @@ import commands.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Game {
     private Map<String, Command> commands;
+    private boolean running = true;
 
     public Game() {
         this.commands = new HashMap<>();
+        Player player = new Player(3);
+
+        registerCommands();
     }
 
     public void registerCommands() {
@@ -22,15 +27,28 @@ public class Game {
         commands.put("exit", new ExitCommand(this));
     }
 
-    public void StartCommands(String key) {
-        String[] parts = key.split(" ");
+    public void StartCommand(String key) {
+        String[] parts = key.split("\\s+");
 
         Command command = commands.get(parts[0]);
 
         if (command == null) {
-            System.out.println("invlaid input");
+            System.out.println("invalid input");
             return;
         }
         command.execute(parts);
+    }
+
+        public void run () {
+        Scanner sc = new Scanner(System.in);
+
+        while (running) {
+            String input = sc.nextLine();
+            StartCommand(input);
+        }
+    }
+
+    public void endGame () {
+        running = false;
     }
 }

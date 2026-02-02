@@ -1,5 +1,6 @@
 package commands;
 import core.Game;
+import core.Player;
 
 public class BackpackCommand implements Command {
 
