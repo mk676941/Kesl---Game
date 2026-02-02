@@ -17,6 +17,7 @@ public class NPC {
 
     private Map<String, Item> items;
 
+    //TODO vytvorit quest metody
     public NPC(String id, String name, String dialogue, String quest) {
         this.id = id;
         this.name = name;
