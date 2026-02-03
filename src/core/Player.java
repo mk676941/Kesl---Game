@@ -39,3 +39,4 @@ public class Player {
         return capacity;
     }
 }
+//TODO zmenit mapy na String nebo ArrayList

@@ -17,7 +17,6 @@ public class NPC {
 
     private Map<String, Item> items;
 
-    //TODO vytvorit quest metody
     public NPC(String id, String name, String dialogue, String quest) {
         this.id = id;
         this.name = name;
@@ -95,3 +94,7 @@ public class NPC {
         return items.containsKey(itemId);
     }
 }
+
+//TODO vytvorit quest metody-logiku questu
+//TODO obstarat studenta na chodbe
+//TODO zmenit mapy na String nebo ArrayList

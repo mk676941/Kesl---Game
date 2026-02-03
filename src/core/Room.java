@@ -8,10 +8,10 @@ public class Room {
     private String name;
     private String description;
 
-    private Map<String, Room> exits;
+    private Map<String, String> exits;
 
-    private Map<String, Item> items;
-    private Map<String, NPC> npcs;
+    private Map<String, String> items;
+    private Map<String, String> npcs;
 
     private boolean explored;
 
@@ -23,9 +23,9 @@ public class Room {
         this.name = name;
         this.description = description;
 
-        this.exits = new HashMap<String, Room>();
-        this.items = new HashMap<String, Item>();
-        this.npcs = new HashMap<String, NPC>();
+        this.exits = new HashMap<String, String>();
+        this.items = new HashMap<String, String>();
+        this.npcs = new HashMap<String, String>();
 
         this.explored = false;
         this.blocked = false;
@@ -43,13 +43,13 @@ public class Room {
     }
 
     //exits management
-    public void addExit(String direction, Room room) {
+    public void addExit(String direction, String room) {
         exits.put(direction, room);
     }
-    public Room getExit(String direction) {
+    public String getExit(String direction) {
         return exits.get(direction);
     }
-    public Map<String, Room> getExits() {
+    public Map<String, String> getExits() {
         return exits;
     }
 
@@ -62,11 +62,11 @@ public class Room {
     }
 
     //items management
-    public boolean addItem(Item item) {
-        items.put(item.getId(), item);
+    public boolean addItem(String item) {
+        items.put(item, item);
         return true;
     }
-    public Item removeItem(String itemId) {
+    public String removeItem(String itemId) {
         return items.remove(itemId);
     }
     public boolean hasItem(String itemId) {
@@ -74,11 +74,11 @@ public class Room {
     }
 
     //npcs management
-    public boolean addNpc(NPC npc) {
-        npcs.put(npc.getId(), npc);
+    public boolean addNpc(String npc) {
+        npcs.put(npc, npc);
         return true;
     }
-    public NPC getNpc(String npcId) {
+    public String getNpc(String npcId) {
         return npcs.get(npcId);
     }
     public boolean hasNpc(String npcId) {
