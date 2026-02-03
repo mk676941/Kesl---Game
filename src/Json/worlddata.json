@@ -1,0 +1,214 @@
+{
+  "rooms": {
+    "kmenovaucebna": {
+      "id": "kmenovaucebna",
+      "name": "Kmenova ucebna",
+      "description": "Vychozi mistnost hrace",
+      "exits": {
+        "J": "chodba"
+      },
+      "items": {},
+      "npcs": {},
+      "explored": false,
+      "blocked": false
+    },
+    "vratnice": {
+      "id": "vratnice",
+      "name": "Vratnice",
+      "description": "Skolnikuv bejvak",
+      "exits": {
+        "SV": "chodba"
+      },
+      "items": {
+        "klicodkabinetu": "klicodkabinetu"
+      },
+      "npcs": {
+        "skolnik": "skolnik"
+      },
+      "explored": false,
+      "blocked": false
+    },
+    "chodba": {
+      "id": "chodba",
+      "name": "Chodba",
+      "description": "Hlavni propojovaci prostor",
+      "exits": {
+        "JZ": "vratnice",
+        "S": "kmenovaucebna",
+        "SV": "pocitacovaucebna",
+        "V": "laborka",
+        "SZ": "kabinet",
+        "Z": "dilna",
+        "J": "hlavnivchod",
+        "JV": "serverovaucebna"
+      },
+      "items": {},
+      "npcs": {
+        "studentnachodbe": "studentnachodbe"
+      },
+      "explored": false,
+      "blocked": false
+    },
+    "laborka": {
+      "id": "laborka",
+      "name": "Laborka",
+      "description": "Smradlava mistnost chemie",
+      "exits": {
+        "Z": "chodba"
+      },
+      "items": {
+        "kyselina": "kyselina"
+      },
+      "npcs": {},
+      "explored": false,
+      "blocked": false
+    },
+    "pocitacovaucebna": {
+      "id": "pocitacovaucebna",
+      "name": "Pocitacova ucebna",
+      "description": "beep-beep-beep",
+      "exits": {
+        "JZ": "chodba"
+      },
+      "items": {
+        "kod": "kod"
+      },
+      "npcs": {
+        "studentvpocitacoveucebne": "studentvpocitacoveucebne"
+      },
+      "explored": false,
+      "blocked": false
+    },
+    "kabinet": {
+      "id": "kabinet",
+      "name": "Kabinet",
+      "description": "Kabinet zle tridni",
+      "exits": {
+        "JV": "chodba"
+      },
+      "items": {
+        "karta": "karta"
+      },
+      "npcs": {},
+      "explored": false,
+      "blocked": false
+    },
+    "dilna": {
+      "id": "dilna",
+      "name": "Dilna",
+      "description": "Dilna plna harampadi",
+      "exits": {
+        "V": "chodba"
+      },
+      "items": {
+        "pacidlo": "pacidlo"
+      },
+      "npcs": {
+        "spravcedilny": "spravcedilny"
+      },
+      "explored": false,
+      "blocked": false
+    },
+    "hlavnivchod": {
+      "id": "hlavnivchod",
+      "name": "Hlavni vchod",
+      "description": "Unikova cesta",
+      "exits": {
+        "S": "chodba"
+      },
+      "items": {},
+      "npcs": {},
+      "explored": false,
+      "blocked": false
+    },
+    "serverovaucebna": {
+      "id": "serverovaucebna",
+      "name": "Serverova ucebna",
+      "description": "Skolni serverovna",
+      "exits": {
+        "SZ": "chodba"
+      },
+      "items": {
+        "heslo": "heslo"
+      },
+      "npcs": {
+        "spravceserveroveucebny": "spravceserveroveucebny"
+      },
+      "explored": false,
+      "blocked": false
+    }
+  },
+  "items": {
+    "heslo": {
+      "id": "heslo",
+      "name": "Heslo hlavnich dveri"
+    },
+    "kod": {
+      "id": "kod",
+      "name": "3-ciselny kod"
+    },
+    "pacidlo": {
+      "id": "pacidlo",
+      "name": "Pacidlo"
+    },
+    "karta": {
+      "id": "karta",
+      "name": "Karta hlavnich dveri"
+    },
+    "klicodkabinetu": {
+      "id": "klicodkabinetu",
+      "name": "Klic od Kabinetu"
+    },
+    "kyselina": {
+      "id": "kyselina",
+      "name": "Kyselina sirova"
+    }
+  },
+  "npcs": {
+    "studentvpocitacoveucebne": {
+      "id": "studentvpocitacoveucebne",
+      "name": "Student v pocitacove ucebne",
+      "dialogue": "Ahoj. Jestli chces ziskat 3-ciselny kod, budes si ho muset zaslouzit.",
+      "quest": " ",
+      "state": "NOT_STARTED",
+      "hints": {},
+      "items": {}
+    },
+    "studentnachodbe": {
+      "id": "studentnachodbe",
+      "name": "Student na chodbe",
+      "dialogue": "Ahoj, jak ti mohu pomoci?",
+      "quest": " ",
+      "state": "NOT_STARTED",
+      "hints": {},
+      "items": {}
+    },
+    "skolnik": {
+      "id": "skolnik",
+      "name": "Skolnik",
+      "dialogue": "Arghh... Jestli chces klic tak mi prines neco z laborky",
+      "quest": " ",
+      "state": "NOT_STARTED",
+      "hints": {},
+      "items": {}
+    },
+    "spravcedilny": {
+      "id": "spravcedilny",
+      "name": "Spravce dilny",
+      "dialogue": "Konecne nekdo odsunul tu skrin! Dekuji, chces pacidlo za odmenu?",
+      "quest": " ",
+      "state": "NOT_STARTED",
+      "hints": {},
+      "items": {}
+    },
+    "spravceserveroveucebny": {
+      "id": "spravceserveroveucebny",
+      "name": "Spravce serverove ucebny",
+      "dialogue": "Koukam ze jsi zjistil kod. Zvladnes dalsi ulohu za heslo?",
+      "quest": " ",
+      "state": "NOT_STARTED",
+      "hints": {},
+      "items": {}
+    }
+  }
+}
