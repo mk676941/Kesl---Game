@@ -4,24 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
-    private Map<String, Item> inventory;
+    private Map<String, String> inventory;
     private int capacity;
 
     public Player(int capacity) {
         this.capacity = capacity;
-        this.inventory = new HashMap<String, Item>();
+        this.inventory = new HashMap<String, String>();
     }
 
     //items management
-    public boolean addItem(Item item) {
+    public boolean addItem(String item) {
         if (isInventoryFull()) {
             return false;
         } else {
-            inventory.put(item.getId(), item);
+            inventory.put(item, item);
         }
         return true;
     }
-    public Item removeItem(String itemId) {
+    public String removeItem(String itemId) {
         return inventory.remove(itemId);
     }
     public boolean hasItem(String itemId){
@@ -32,7 +32,7 @@ public class Player {
     public boolean isInventoryFull(){
         return inventory.size() == capacity;
     }
-    public Map<String, Item> getInventory() {
+    public Map<String, String> getInventory() {
         return inventory;
     }
     public int getCapacity() {

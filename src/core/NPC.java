@@ -7,26 +7,20 @@ public class NPC {
     private String id;
     private String name;
     private String dialogue;
-    private String quest;
-
-    private QuestState state;
-    private Map<QuestState, String> hints;
 
     private String requiredItemId;
     private String rewardItemId;
 
-    private Map<String, Item> items;
+    private Map<String, String> items;
+    private Map<String, String> quests;
 
-    public NPC(String id, String name, String dialogue, String quest) {
+    public NPC(String id, String name, String dialogue) {
         this.id = id;
         this.name = name;
         this.dialogue = dialogue;
-        this.quest = quest;
 
-        this.state = QuestState.NOT_STARTED;
-
-        this.hints = new HashMap<QuestState, String>();
-        this.items = new HashMap<String, Item>();
+        this.items = new HashMap<String, String>();
+        this.quests = new HashMap<String, String>();
     }
 
 
@@ -42,19 +36,11 @@ public class NPC {
     }
 
     //quests
-    public String getQuest() {
+    public Quest getQuest() {
         return quest;
     }
     public boolean hasQuest() {
         return quest != null;
-    }
-
-    //quest state management
-    public QuestState getState() {
-        return state;
-    }
-    public void setState(QuestState state) {
-        this.state = state;
     }
 
     //quest reward management
@@ -73,21 +59,12 @@ public class NPC {
         this.requiredItemId = requiredItemId;
     }
 
-
-    //hints management
-    public String getHint() {
-        return hints.get(state);
-    }
-    public void addHint(QuestState state, String hint) {
-        hints.put(state, hint);
-    }
-
     //items management
-    public boolean addItem(Item item) {
-        items.put(item.getId(), item);
+    public boolean addItem(String item) {
+        items.put(item, item);
         return true;
     }
-    public Item removeItem(String itemId) {
+    public String removeItem(String itemId) {
         return items.remove(itemId);
     }
     public boolean hasItem(String itemId) {
@@ -97,4 +74,3 @@ public class NPC {
 
 //TODO vytvorit quest metody-logiku questu
 //TODO obstarat studenta na chodbe
-//TODO zmenit mapy na String nebo ArrayList

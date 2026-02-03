@@ -6,7 +6,7 @@ public class Main {
         //game.run();
         CreateWorld createWorld = new CreateWorld();
         createWorld.fillWorld();
-        createWorld.saveWorld();
+        //createWorld.saveWorld();
         //createWorld.loadWorld();
         System.out.println("a");
     }

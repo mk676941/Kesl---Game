@@ -7,6 +7,7 @@ public class World {
     private Map<String, Room> rooms;
     private Map<String, Item> items;
     private Map<String, NPC> npcs;
+    private Map<String, Quest> quests;
     private Room startRoom;
 
     public World() {
@@ -48,4 +49,11 @@ public class World {
         return npcs.get(id);
     }
 
+    //quests management
+    public void addQest (Quest quest) {
+        quests.put(quest.getQuestId(), quest);
+    }
+    public Quest getQuest (String id) {
+        return quests.get(id);
+    }
 }

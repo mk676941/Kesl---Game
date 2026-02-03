@@ -97,7 +97,7 @@ public class CreateWorld {
         }
         world = gson.fromJson(json, World.class);
     }
-
-
-
 }
+
+//TODO doplnit questy to pridani npc
+//TODO vytvorit questy
