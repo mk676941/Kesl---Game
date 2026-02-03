@@ -35,6 +35,8 @@ public class NPC {
         return name;
     }
 
+
+    //TODO quest metody dopsat
     //quests
     public Quest getQuest() {
         return quest;
