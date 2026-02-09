@@ -17,6 +17,7 @@ public class Room {
 
     private boolean blocked;
     private String requiredItemId;
+    private boolean requiredHelp;
 
     public Room(String id, String name, String description) {
         this.id = id;
@@ -29,6 +30,8 @@ public class Room {
 
         this.explored = false;
         this.blocked = false;
+        this.requiredItemId = null;
+        this.requiredHelp = false;
     }
 
     //info
@@ -85,18 +88,19 @@ public class Room {
         return npcs.containsKey(npcId);
     }
 
-    //enter requiraments
+    //enter management
     public boolean isBlocked() {
         return blocked;
     }
-    public void setBlocked(boolean blocked) {
+    public void setBlocked(boolean blocked, String requiredItemId, boolean requiredHelp) {
         this.blocked = blocked;
+        this.requiredItemId = requiredItemId;
+        this.requiredHelp = requiredHelp;
     }
-
     public String getRequiredItemId() {
         return requiredItemId;
     }
-    public void setRequiredItemId(String itemId) {
-        requiredItemId = itemId;
+    public boolean isRequiredHelp() {
+        return requiredHelp;
     }
 }

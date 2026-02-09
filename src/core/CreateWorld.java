@@ -12,39 +12,49 @@ import java.nio.file.Paths;
 public class CreateWorld {
     private World world;
 
-    public CreateWorld() {
-        world = new World();
+    public CreateWorld(World world) {
+        this.world = world;
     }
 
     //TODO dodelat questy
     //world fill
     public void fillWorld () {
-        world.addRoom(new Room("kmenovaucebna", "Kmenova ucebna", "Vychozi mistnost hrace"));
-        world.addRoom(new Room("chodba", "Chodba", "Hlavni propojovaci prostor"));
-        world.addRoom(new Room("pocitacovaucebna", "Pocitacova ucebna", "beep-beep-beep"));
-        world.addRoom(new Room("laborka", "Laborka", "Smradlava mistnost chemie"));
-        world.addRoom(new Room("dilna", "Dilna", "Dilna plna harampadi"));
-        world.addRoom(new Room("kabinet", "Kabinet", "Kabinet zle tridni"));
-        world.addRoom(new Room("serverovaucebna", "Serverova ucebna", "Skolni serverovna"));
-        world.addRoom(new Room("vratnice", "Vratnice", "Skolnikuv bejvak"));
-        world.addRoom(new Room("hlavnivchod", "Hlavni vchod", "Unikova cesta"));
+        world.addRoom(new Room("kmenovaucebna", "Kmenová učebna", "Výchozí místnost hráče"));
+        world.addRoom(new Room("chodba", "Chodba", "Hlavní propojovací prostor"));
+        world.addRoom(new Room("pocitacovaucebna", "Počítačová učebna", "beep-beep-beep"));
+        world.addRoom(new Room("laborka", "Laborka", "Smradlavá místnost chemie"));
+        world.addRoom(new Room("dilna", "Dílna", "Dílna plná harampádí"));
+        world.addRoom(new Room("kabinet", "Kabinet", "Kabinet zlé třídní"));
+        world.addRoom(new Room("serverovaucebna", "Serverová učebna", "Školní serverovna"));
+        world.addRoom(new Room("vratnice", "Vrátnice", "Školníkuv bejvák"));
+        world.addRoom(new Room("hlavnivchod", "Hlavní vchod", "Úniková cesta"));
 
-        world.addItem(new Item("pacidlo", "Pacidlo"));
-        world.addItem(new Item("kyselina", "Kyselina sirova"));
-        world.addItem(new Item("klicodkabinetu", "Klic od Kabinetu"));
-        world.addItem(new Item("karta", "Karta hlavnich dveri"));
-        world.addItem(new Item("kod", "3-ciselny kod"));
-        world.addItem(new Item("heslo", "Heslo hlavnich dveri"));
+        world.addItem(new Item("pacidlo", "Pačidlo"));
+        world.addItem(new Item("kyselina", "Kyselina sírová"));
+        world.addItem(new Item("klicodkabinetu", "Klíč od Kabinetu"));
+        world.addItem(new Item("karta", "Karta hlavních dveří"));
+        world.addItem(new Item("kod", "3-číselný kód"));
+        world.addItem(new Item("heslo", "Heslo hlavních dveří"));
 
-        world.addNPC(new NPC("studentnachodbe", "Student na chodbe", "Ahoj, jak ti mohu pomoci?"));
-        world.addNPC(new NPC("studentvpocitacoveucebne", "Student v pocitacove ucebne", "Ahoj. Jestli chces ziskat 3-ciselny kod, budes si ho muset zaslouzit."));
-        world.addNPC(new NPC("spravcedilny", "Spravce dilny", "Konecne nekdo odsunul tu skrin! Dekuji, chces pacidlo za odmenu?"));
-        world.addNPC(new NPC("spravceserveroveucebny", "Spravce serverove ucebny", "Koukam ze jsi zjistil kod. Zvladnes dalsi ulohu za heslo?"));
-        world.addNPC(new NPC("skolnik","Skolnik", "Arghh... Jestli chces klic tak mi prines neco z laborky"));
+        world.addNPC(new NPC("studentnachodbe", "Student na chodbě", "Ahoj, jak ti mohu pomoci?"));
+        world.addNPC(new NPC("studentvpocitacoveucebne", "Student v počítačové učebně", "Ahoj. Jestli chceš získat 3-číselný kód, budeš si ho muset zasloužit."));
+        world.addNPC(new NPC("spravcedilny", "Správce dílny", "Konečně někdo odsunul tu skřín! Děkuji, chceš získat páčidlo?"));
+        world.addNPC(new NPC("spravceserveroveucebny", "Správce serverové učebny", "Koukám že jsi zjistil kód. Zvládneš další úlohu pro získání hesla?"));
+        world.addNPC(new NPC("skolnik","Školník", "Arghh... Jestli chceš klíč od kabinetu tak mi přines kyselinu z laborky"));
 
-        world.addQest(new Quest("1+2", "1+2=", "3"));
+        world.addQest(new Quest("pcstudent", "Na monitoru svítí nápis: ‘Pro přístup zadej správné slovo.’\n" +
+                "Nápověda: Jsem začátek i konec abecedy. Bez mě bys nic nenapsal. Co jsem?\n" +
+                "Zadej odpověď jedním slovem.", "pismeno"));
+        world.addQest(new Quest("spravcedilny", "Správce dílny: ‘Než ti něco dám, řekni mi jednu věc.\n" +
+                "Jaký předmět si bereš na ruce, když pracuješ v dílně?’\n" +
+                "Napiš odpověď jedním slovem.", "rukavice"));
+        world.addQest(new Quest("spravceserverovny", "Správce serverovny: ‘Chci si být jistý, že chápeš, co je to heslo.’\n" +
+                "Otázka: Co je silnější: heslo 123456 nebo K0c0ur!2026?\n" +
+                "Napiš pouze: A pro první, nebo B pro druhé.", "b"));
 
-        world.getNPC("spravcedilny").addQuest("1+2");
+        world.getNPC("studentvpocitacoveucebne").addQuest("pcstudent");
+        world.getNPC("spravcedilny").addQuest("spravcedilny");
+        world.getNPC("spravceserveroveucebny").addQuest("spravceserverovny");
 
         world.getRoom("chodba").addNpc("studentnachodbe");
         world.getRoom("pocitacovaucebna").addNpc("studentvpocitacoveucebne");
@@ -76,6 +86,12 @@ public class CreateWorld {
         world.getRoom("chodba").addExit("JV", "serverovaucebna");
         world.getRoom("chodba").addExit("JZ", "vratnice");
         world.getRoom("chodba").addExit("J", "hlavnivchod");
+
+        world.getRoom("laborka").setBlocked(true, "pacidlo", false);
+        world.getRoom("dilna").setBlocked(true, null, true);
+        world.getRoom("kabinet").setBlocked(true, "klicodkabinetu", false);
+        world.getRoom("serverovaucebna").setBlocked(true, "kod", false);
+        //world.getRoom("hlavnivchod").setBlocked(true, null, false);
     }
 
     //gson save
@@ -103,5 +119,5 @@ public class CreateWorld {
     }
 }
 
-//TODO doplnit questy to pridani npc
+//TODO doplnit questy do pridani npc
 //TODO vytvorit questy

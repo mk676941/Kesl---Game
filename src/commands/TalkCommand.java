@@ -10,7 +10,7 @@ public class TalkCommand implements Command {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public boolean execute(String[] args) {
+        return true;
     }
 }

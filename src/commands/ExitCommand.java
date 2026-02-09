@@ -3,15 +3,11 @@ import core.Game;
 
 public class ExitCommand implements Command {
 
-    private Game game;
 
-    public ExitCommand(Game game) {
-        this.game = game;
-    }
+    public ExitCommand() {}
 
     @Override
-    public void execute(String[] args) {
-        System.out.println("Game ended");
-        game.endGame();
+    public boolean execute(String[] args) {
+        return false;
     }
 }

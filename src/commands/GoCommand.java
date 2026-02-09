@@ -1,15 +1,79 @@
 package commands;
-import core.Game;
+import core.Player;
+import core.World;
+
 public class GoCommand implements Command {
 
-    private Game game;
+    private Player player;
+    private World world;
 
-    public GoCommand(Game game) {
-        this.game = game;
+    public GoCommand(Player player, World world) {
+        this.player = player;
+        this.world = world;
     }
 
     @Override
-    public void execute(String[] args) {
+    public boolean execute(String[] args) {
+        boolean help;
+        boolean item;
 
+        if (args.length <2) {
+            System.out.println("Nezadal jsi směr.");
+            return true;
+        }
+
+        String direction = args[1].toUpperCase();
+
+        String exit = world.getRoom(player.getCurrentRoom()).getExit(direction);
+
+        if (exit == null) {
+            System.out.println("Tímto směrem není žádná cesta.");
+        } else {
+            //hlavni vchod
+            if (exit=="hlavnivchod") {
+                if (player.hasItem("karta")&&player.hasItem("heslo")) {
+                    player.setHasWon(true);
+                    //world.getRoom("hlavnivchod").setBlocked(false, null, false);
+                    return false;
+                } else {
+                    System.out.println("Nemáš potřebné věci k úniku, potřebuješ: " + world.getItem("karta").getName() + "; " + world.getItem("heslo").getName());
+                }
+            }
+
+            //ostatni mistnosti
+            if (world.getRoom(exit).isBlocked()) {
+                //zablokovana mistnost
+                if (world.getRoom(exit).isRequiredHelp()) {
+                    if (player.getHasHelp()) {
+                        help = true;
+                    } else help = false;
+                } else help = true;
+
+                if (world.getRoom(exit).getRequiredItemId()!=null) {
+                    if (player.getInventory().containsKey(world.getRoom(exit).getRequiredItemId())) {
+                       item = true;
+                    } else item = false;
+                } else item = true;
+
+                if (help && item) {
+                    world.getRoom(exit).setBlocked(false, null, false);
+                    player.setCurrentRoom(exit);
+                    System.out.println("Přesunul jsi se do: " + world.getRoom(exit).getName());
+                } else {
+                    System.out.println("Do místnosti " + world.getRoom(exit).getName() + " se nemůžeš dostat. Potřebuješ:");
+                    if (world.getRoom(exit).getRequiredItemId()!=null) {
+                        System.out.println(world.getItem(world.getRoom(exit).getRequiredItemId()).getName());
+                    }
+                    if (world.getRoom(exit).isRequiredHelp()) {
+                        System.out.println("pomoc od některého NPC");
+                    }
+                }
+            } else {
+                //odblokovana mistnost
+                player.setCurrentRoom(exit);
+                System.out.println("Přesunul jsi se do: " + world.getRoom(exit).getName());
+            }
+        }
+        return true;
     }
 }

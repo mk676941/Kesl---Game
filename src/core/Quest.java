@@ -44,4 +44,3 @@ public class Quest {
         this.state = state;
     }
 }
-//TODO dodelat tridu Quest

@@ -8,7 +8,6 @@ public class World {
     private Map<String, Item> items;
     private Map<String, NPC> npcs;
     private Map<String, Quest> quests;
-    private Room startRoom;
 
     public World() {
         this.rooms = new HashMap<>();
@@ -26,12 +25,6 @@ public class World {
     }
     public Map<String, Room> getRooms() {
         return rooms;
-    }
-    public void setStartRoom(Room room) {
-        this.startRoom = room;
-    }
-    public Room getStartRoom() {
-        return startRoom;
     }
 
     //items management

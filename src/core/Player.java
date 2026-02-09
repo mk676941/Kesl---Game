@@ -6,10 +6,16 @@ import java.util.Map;
 public class Player {
     private Map<String, String> inventory;
     private int capacity;
+    private String currentRoom;
+    private boolean hasHelp;
+    private boolean hasWon;
 
     public Player(int capacity) {
         this.capacity = capacity;
         this.inventory = new HashMap<String, String>();
+        this.currentRoom = "kmenovaucebna";
+        this.hasHelp = false;
+        this.hasWon = false;
     }
 
     //items management
@@ -38,5 +44,28 @@ public class Player {
     public int getCapacity() {
         return capacity;
     }
+
+    //current room management
+    public String getCurrentRoom() {
+        return currentRoom;
+    }
+    public void setCurrentRoom(String currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
+    //help management
+    public boolean getHasHelp() {
+        return hasHelp;
+    }
+    public void setHasHelp(boolean hasHelp) {
+        this.hasHelp = hasHelp;
+    }
+
+    //win management
+    public boolean getHasWon() {
+        return hasWon;
+    }
+    public void setHasWon(boolean hasWon) {
+        this.hasWon = hasWon;
+    }
 }
-//TODO zmenit mapy na String nebo ArrayList

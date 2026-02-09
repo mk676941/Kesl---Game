@@ -35,8 +35,6 @@ public class NPC {
         return name;
     }
 
-
-    //TODO quest metody dopsat
     //quests
     public boolean addQuest(String quest) {
         quests.put(quest, quest);
@@ -77,6 +75,4 @@ public class NPC {
         return items.containsKey(itemId);
     }
 }
-
-//TODO vytvorit quest metody-logiku questu
 //TODO obstarat studenta na chodbe
