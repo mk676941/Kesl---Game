@@ -38,11 +38,15 @@ public class NPC {
 
     //TODO quest metody dopsat
     //quests
-    public Quest getQuest() {
-        return quest;
+    public boolean addQuest(String quest) {
+        quests.put(quest, quest);
+        return true;
     }
-    public boolean hasQuest() {
-        return quest != null;
+    public String getQuest(String questId) {
+        return quests.get(questId);
+    }
+    public boolean hasQuest(String questId) {
+        return quests.containsKey(questId);
     }
 
     //quest reward management

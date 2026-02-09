@@ -36,11 +36,15 @@ public class CreateWorld {
         world.addItem(new Item("kod", "3-ciselny kod"));
         world.addItem(new Item("heslo", "Heslo hlavnich dveri"));
 
-        world.addNPC(new NPC("studentnachodbe", "Student na chodbe", "Ahoj, jak ti mohu pomoci?", " "));
-        world.addNPC(new NPC("studentvpocitacoveucebne", "Student v pocitacove ucebne", "Ahoj. Jestli chces ziskat 3-ciselny kod, budes si ho muset zaslouzit.", " "));
-        world.addNPC(new NPC("spravcedilny", "Spravce dilny", "Konecne nekdo odsunul tu skrin! Dekuji, chces pacidlo za odmenu?", " "));
-        world.addNPC(new NPC("spravceserveroveucebny", "Spravce serverove ucebny", "Koukam ze jsi zjistil kod. Zvladnes dalsi ulohu za heslo?", " "));
-        world.addNPC(new NPC("skolnik","Skolnik", "Arghh... Jestli chces klic tak mi prines neco z laborky", " "));
+        world.addNPC(new NPC("studentnachodbe", "Student na chodbe", "Ahoj, jak ti mohu pomoci?"));
+        world.addNPC(new NPC("studentvpocitacoveucebne", "Student v pocitacove ucebne", "Ahoj. Jestli chces ziskat 3-ciselny kod, budes si ho muset zaslouzit."));
+        world.addNPC(new NPC("spravcedilny", "Spravce dilny", "Konecne nekdo odsunul tu skrin! Dekuji, chces pacidlo za odmenu?"));
+        world.addNPC(new NPC("spravceserveroveucebny", "Spravce serverove ucebny", "Koukam ze jsi zjistil kod. Zvladnes dalsi ulohu za heslo?"));
+        world.addNPC(new NPC("skolnik","Skolnik", "Arghh... Jestli chces klic tak mi prines neco z laborky"));
+
+        world.addQest(new Quest("1+2", "1+2=", "3"));
+
+        world.getNPC("spravcedilny").addQuest("1+2");
 
         world.getRoom("chodba").addNpc("studentnachodbe");
         world.getRoom("pocitacovaucebna").addNpc("studentvpocitacoveucebne");

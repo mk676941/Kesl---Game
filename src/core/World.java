@@ -14,6 +14,7 @@ public class World {
         this.rooms = new HashMap<>();
         this.items = new HashMap<>();
         this.npcs = new HashMap<>();
+        this.quests = new HashMap<>();
     }
 
     //rooms management
