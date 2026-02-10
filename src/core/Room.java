@@ -76,6 +76,7 @@ public class Room {
         return items.containsKey(itemId);
     }
 
+    //TODO Ziskavani npc je spatne napsane, upraveno, zkontrolovat pozdeji
     //npcs management
     public boolean addNpc(String npc) {
         npcs.put(npc, npc);
@@ -84,8 +85,10 @@ public class Room {
     public String getNpc(String npcId) {
         return npcs.get(npcId);
     }
-    public boolean hasNpc(String npcId) {
-        return npcs.containsKey(npcId);
+    public boolean hasNpc() {
+        if (npcs.isEmpty()){
+            return false;
+        } else return true;
     }
 
     //enter management

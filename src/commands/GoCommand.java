@@ -17,6 +17,7 @@ public class GoCommand implements Command {
         boolean help;
         boolean item;
 
+        //kontrola delky pole
         if (args.length <2) {
             System.out.println("Nezadal jsi směr.");
             return true;
@@ -33,7 +34,6 @@ public class GoCommand implements Command {
             if (exit=="hlavnivchod") {
                 if (player.hasItem("karta")&&player.hasItem("heslo")) {
                     player.setHasWon(true);
-                    //world.getRoom("hlavnivchod").setBlocked(false, null, false);
                     return false;
                 } else {
                     System.out.println("Nemáš potřebné věci k úniku, potřebuješ: " + world.getItem("karta").getName() + "; " + world.getItem("heslo").getName());

@@ -91,7 +91,6 @@ public class CreateWorld {
         world.getRoom("dilna").setBlocked(true, null, true);
         world.getRoom("kabinet").setBlocked(true, "klicodkabinetu", false);
         world.getRoom("serverovaucebna").setBlocked(true, "kod", false);
-        //world.getRoom("hlavnivchod").setBlocked(true, null, false);
     }
 
     //gson save
@@ -118,6 +117,3 @@ public class CreateWorld {
         world = gson.fromJson(json, World.class);
     }
 }
-
-//TODO doplnit questy do pridani npc
-//TODO vytvorit questy

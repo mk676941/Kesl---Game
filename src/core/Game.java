@@ -24,7 +24,7 @@ public class Game {
         commands.put("go", new GoCommand(this.player, this.world));
         commands.put("use", new UseCommand(this));
         commands.put("take", new TakeCommand(this));
-        commands.put("talk", new TalkCommand(this));
+        commands.put("talk", new TalkCommand(this.player, this.world));
         commands.put("explore", new ExploreCommand(this));
         commands.put("backpack", new BackpackCommand(this));
         commands.put("help", new HelpCommand(this));
