@@ -14,6 +14,8 @@ public class GoCommand implements Command {
 
     @Override
     public boolean execute(String[] args) {
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
+
         boolean help;
         boolean item;
 
@@ -30,6 +32,7 @@ public class GoCommand implements Command {
         if (exit == null) {
             System.out.println("Tímto směrem není žádná cesta.");
         } else {
+
             //hlavni vchod
             if (exit=="hlavnivchod") {
                 if (player.hasItem("karta")&&player.hasItem("heslo")) {
@@ -42,6 +45,7 @@ public class GoCommand implements Command {
 
             //ostatni mistnosti
             if (world.getRoom(exit).isBlocked()) {
+
                 //zablokovana mistnost
                 if (world.getRoom(exit).isRequiredHelp()) {
                     if (player.getHasHelp()) {
@@ -69,11 +73,13 @@ public class GoCommand implements Command {
                     }
                 }
             } else {
+
                 //odblokovana mistnost
                 player.setCurrentRoom(exit);
                 System.out.println("Přesunul jsi se do: " + world.getRoom(exit).getName());
             }
         }
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
         return true;
     }
 }

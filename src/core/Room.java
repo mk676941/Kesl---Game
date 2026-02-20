@@ -72,15 +72,25 @@ public class Room {
     public String removeItem(String itemId) {
         return items.remove(itemId);
     }
-    public boolean hasItem(String itemId) {
-        return items.containsKey(itemId);
+    public boolean hasItem() {
+        if (items.isEmpty()) {
+            return false;
+        } else return true;
+    }
+    public Map<String, String> getItems() {
+        return items;
+    }
+    public String getItem(String itemId) {
+        return items.get(itemId);
     }
 
-    //TODO Ziskavani npc je spatne napsane, upraveno, zkontrolovat pozdeji
     //npcs management
     public boolean addNpc(String npc) {
         npcs.put(npc, npc);
         return true;
+    }
+    public Map<String, String> getNpcs() {
+        return npcs;
     }
     public String getNpc(String npcId) {
         return npcs.get(npcId);

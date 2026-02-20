@@ -29,7 +29,7 @@ public class CreateWorld {
         world.addRoom(new Room("vratnice", "Vrátnice", "Školníkuv bejvák"));
         world.addRoom(new Room("hlavnivchod", "Hlavní vchod", "Úniková cesta"));
 
-        world.addItem(new Item("pacidlo", "Pačidlo"));
+        world.addItem(new Item("pacidlo", "Páčidlo"));
         world.addItem(new Item("kyselina", "Kyselina sírová"));
         world.addItem(new Item("klicodkabinetu", "Klíč od Kabinetu"));
         world.addItem(new Item("karta", "Karta hlavních dveří"));
@@ -88,7 +88,7 @@ public class CreateWorld {
         world.getRoom("chodba").addExit("J", "hlavnivchod");
 
         world.getRoom("laborka").setBlocked(true, "pacidlo", false);
-        world.getRoom("dilna").setBlocked(true, null, true);
+        //world.getRoom("dilna").setBlocked(true, null, true);
         world.getRoom("kabinet").setBlocked(true, "klicodkabinetu", false);
         world.getRoom("serverovaucebna").setBlocked(true, "kod", false);
     }
