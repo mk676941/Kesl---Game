@@ -157,7 +157,10 @@ public class Game {
                 "\n" +
                 "Jakmile získáš potřebné itemy k otevření hlavnícho vchodu,\n" +
                 "unikl jsi a vítězíš.");
-        System.out.println("----------------------------------------------------------------------------------------------------------------");
+
+        Command help = commands.get("help");
+        help.execute(null);
+
         System.out.print(">");
         Scanner sc = new Scanner(System.in);
 
