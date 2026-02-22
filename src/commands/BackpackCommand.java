@@ -21,7 +21,7 @@ public class BackpackCommand implements Command {
             System.out.println("Batoh je prázdný.");
         } else {
             System.out.println("Obsah tvého batohu:");
-            System.out.println("-------------------------------");
+            System.out.println("---------------------------------------------------");
             for (String itemId : player.getInventory().keySet()) {
                 Item item = world.getItem(itemId);
                 System.out.println(">>> " + item.getName());

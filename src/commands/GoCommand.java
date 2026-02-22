@@ -40,7 +40,10 @@ public class GoCommand implements Command {
                     player.setHasWon(true);
                     return false;
                 } else {
-                    System.out.println("Nemáš potřebné věci k úniku, potřebuješ: " + world.getItem("karta").getName() + "; " + world.getItem("heslo").getName());
+                    System.out.println("Nemáš potřebné věci k úniku, potřebuješ:");
+                    System.out.println("---------------------------------------------------");
+                    System.out.println(">>> " + world.getItem("karta").getName());
+                    System.out.println(">>> " + world.getItem("heslo").getName());
                 }
             }
 
@@ -66,11 +69,12 @@ public class GoCommand implements Command {
                     System.out.println("Přesunul jsi se do: " + world.getRoom(exit).getName());
                 } else {
                     System.out.println("Do místnosti " + world.getRoom(exit).getName() + " se nemůžeš dostat. Potřebuješ:");
+                    System.out.println("---------------------------------------------------");
                     if (world.getRoom(exit).getRequiredItemId()!=null) {
-                        System.out.println(world.getItem(world.getRoom(exit).getRequiredItemId()).getName());
+                        System.out.println(world.getItem(">>> " + world.getRoom(exit).getRequiredItemId()).getName());
                     }
                     if (world.getRoom(exit).isRequiredHelp()) {
-                        System.out.println("pomoc od některého NPC");
+                        System.out.println("Pomoc od některého NPC.");
                     }
                 }
             } else {

@@ -151,9 +151,9 @@ public class Game {
                 "Tvým cílem je opustit školu hlavním vchodem.\n" +
                 "\n" +
                 "Aby se ti to podařilo, musíš:\n" +
-                "- prozkoumávat školu a její místnosti,\n" +
-                "- plnit úkoly pro ostatní postavy,\n" +
-                "- získat potřebné itemy, kódy a hesla.\n" +
+                "> prozkoumávat školu a její místnosti,\n" +
+                "> plnit úkoly pro ostatní postavy,\n" +
+                "> získat potřebné itemy, kódy a hesla.\n" +
                 "\n" +
                 "Jakmile získáš potřebné itemy k otevření hlavnícho vchodu,\n" +
                 "unikl jsi a vítězíš.");

@@ -43,8 +43,7 @@ public class MapCommand implements Command {
                 "   |                   |   |                 |   |                   |\n" +
                 "   |                   |   |                 |   |                   |\n" +
                 "   +-------------------+   +-----------------+   +-------------------+");
-
-        System.out.println("-------------------------------");
+        System.out.println();
         System.out.println("Nacházíš se v: " + world.getRoom(player.getCurrentRoom()).getName());
         System.out.println("----------------------------------------------------------------------------------------------------------------");
         return true;

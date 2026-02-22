@@ -32,18 +32,20 @@ public class ExploreCommand implements Command {
         //vypis npc
         if (room.hasNpc())
             System.out.print("V místnosti se nachází: ");
+        System.out.println("---------------------------------------------------");
         for (String npcId : room.getNpcs().keySet()) {
             NPC npc = world.getNPC(npcId);
-            System.out.println(npc.getName());
+            System.out.println(">>> " + npc.getName());
             System.out.println();
         }
 
         //vypis itemu v mistnosti
         if (room.hasItem()) {
             System.out.println("V místnosti je:");
+            System.out.println("---------------------------------------------------");
             for (String itemId : room.getItems().keySet()) {
                 Item item = world.getItem(itemId);
-                    System.out.println("- " + item.getName());
+                    System.out.println(">>> " + item.getName());
             }
         } else System.out.println("V místnosti není žádný item.");
 

@@ -22,14 +22,13 @@ public class HelpCommand implements Command {
         System.out.println("Některé místnosti jsou nepřístupné. Ke vstupu potřebuješ buď nějaký item, nebo pomoc některého z NPC.");
         System.out.println();
         System.out.println("Seznam všech commandů. Voláš je pomocí command id:");
-        System.out.println("-------------------------------");
+        System.out.println("---------------------------------------------------");
         for (String commandId : game.getCommands().keySet()) {
             System.out.println(">>> command id: " + commandId);
         }
-        System.out.println("-------------------------------");
         System.out.println();
         System.out.println("Seznam všech itemů. Pracuješ s nima pomocí item id:");
-        System.out.println("-------------------------------");
+        System.out.println("---------------------------------------------------");
         for (String itemId : world.getItems().keySet()) {
             Item item = world.getItems().get(itemId);
             System.out.printf(">>> item id: %-15s item name: %s%n",
