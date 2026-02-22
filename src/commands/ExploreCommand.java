@@ -1,8 +1,6 @@
 package commands;
 import core.*;
 
-import java.util.Random;
-
 public class ExploreCommand implements Command {
 
     private World world;
@@ -30,9 +28,10 @@ public class ExploreCommand implements Command {
         }
 
         //vypis npc
-        if (room.hasNpc())
-            System.out.print("V místnosti se nachází: ");
-        System.out.println("---------------------------------------------------");
+        if (room.hasNpc()) {
+            System.out.println("V místnosti se nachází: ");
+            System.out.println("---------------------------------------------------");
+        }
         for (String npcId : room.getNpcs().keySet()) {
             NPC npc = world.getNPC(npcId);
             System.out.println(">>> " + npc.getName());

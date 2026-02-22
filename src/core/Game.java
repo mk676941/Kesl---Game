@@ -173,6 +173,8 @@ public class Game {
 
     public void endGame () {
         if (player.getHasWon()){
+            System.out.println("Uspěšně jsi odemkl hlavní vchod!");
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
             System.out.println("Gratuluji, vyhrál jsi!");
         } else System.out.println("Hodně štěstí příště.");
         System.out.println("Konec hry.");

@@ -68,6 +68,10 @@ public class NPC {
         items.put(item, item);
         return true;
     }
+    public Map<String, String> getItems() {
+        return items;
+    }
+
     public String removeItem(String itemId) {
         return items.remove(itemId);
     }
