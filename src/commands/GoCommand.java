@@ -22,6 +22,7 @@ public class GoCommand implements Command {
         //kontrola delky pole
         if (args.length <2) {
             System.out.println("Nezadal jsi směr.");
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
             return true;
         }
 

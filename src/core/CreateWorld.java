@@ -87,8 +87,8 @@ public class CreateWorld {
         world.getRoom("chodba").addExit("JZ", "vratnice");
         world.getRoom("chodba").addExit("J", "hlavnivchod");
 
-        world.getRoom("laborka").setBlocked(true, "pacidlo", false);
-        //world.getRoom("dilna").setBlocked(true, null, true);
+        //world.getRoom("laborka").setBlocked(true, "pacidlo", false);
+        world.getRoom("dilna").setBlocked(true, null, true);
         world.getRoom("kabinet").setBlocked(true, "klicodkabinetu", false);
         world.getRoom("serverovaucebna").setBlocked(true, "kod", false);
     }

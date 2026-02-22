@@ -1,6 +1,7 @@
 package commands;
 import core.Game;
 
+//TODO nebude potreba, pripadne smazat
 public class UseCommand implements Command {
 
     private Game game;

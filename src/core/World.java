@@ -34,6 +34,9 @@ public class World {
     public Item getItem(String id) {
         return items.get(id);
     }
+    public Map<String, Item> getItems() {
+        return items;
+    }
 
     //npc management
     public void addNPC(NPC npc) {

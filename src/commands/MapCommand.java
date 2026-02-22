@@ -1,8 +1,16 @@
 package commands;
 
+import core.Player;
+import core.World;
+
 public class MapCommand implements Command {
 
-    public MapCommand() {}
+    private World world;
+    private Player player;
+    public MapCommand(World world, Player player) {
+        this.world = world;
+        this.player = player;
+    }
 
     @Override
     public boolean execute(String[] args) {
@@ -36,6 +44,8 @@ public class MapCommand implements Command {
                 "   |                   |   |                 |   |                   |\n" +
                 "   +-------------------+   +-----------------+   +-------------------+");
 
+        System.out.println("-------------------------------");
+        System.out.println("Nacházíš se v: " + world.getRoom(player.getCurrentRoom()).getName());
         System.out.println("----------------------------------------------------------------------------------------------------------------");
         return true;
     }
