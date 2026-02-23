@@ -2,12 +2,12 @@ package commands;
 import core.Player;
 import core.World;
 
-public class TakeCommand implements Command {
+public class PutCommand implements Command {
 
     private World world;
     private Player player;
 
-    public TakeCommand(World world, Player player) {
+    public PutCommand(World world, Player player) {
         this.world = world;
         this.player = player;
     }
@@ -29,19 +29,14 @@ public class TakeCommand implements Command {
 
         String itemId = args[1].toLowerCase();
 
-        String item = world.getRoom(player.getCurrentRoom()).getItem(itemId);
+        boolean item = player.hasItem(itemId);
 
-        if (item == null) {
+        if (item == false) {
             System.out.println("Item nebyl nalezen.");
         } else {
-            //kontrola kapacity inventare
-            if (player.isInventoryFull()) {
-                System.out.println("Máš plný intentář. Odlož si u nekterého z NPC nejaký item z tvého intentáře.");
-            } else {
-                world.getRoom(player.getCurrentRoom()).removeItem(item);
-                player.addItem(item);
-                System.out.println("Item byl přidán do tvého inventáře.");
-            }
+            world.getRoom(player.getCurrentRoom()).addItem(itemId);
+            player.removeItem(itemId);
+            System.out.println("Item byl uložen do místnosti.");
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------");
         return true;

@@ -42,13 +42,13 @@ public class CreateWorld {
         world.addNPC(new NPC("spravceserveroveucebny", "Správce serverové učebny", "Koukám že jsi zjistil kód. Zvládneš další úlohu pro získání hesla?"));
         world.addNPC(new NPC("skolnik","Školník", "Arghh... Jestli chceš klíč od kabinetu tak mi přines kyselinu z laborky"));
 
-        world.addQest(new Quest("pcstudent", "Na monitoru svítí nápis: ‘Pro přístup zadej správné slovo.’\n" +
+        world.addQest(new Quest("pcstudent", "Na monitoru svítí nápis: Pro přístup zadej správné slovo.\n" +
                 "Nápověda: Jsem začátek i konec abecedy. Bez mě bys nic nenapsal. Co jsem?\n" +
                 "Zadej odpověď jedním slovem.", "pismeno"));
-        world.addQest(new Quest("spravcedilny", "Správce dílny: ‘Než ti něco dám, řekni mi jednu věc.\n" +
-                "Jaký předmět si bereš na ruce, když pracuješ v dílně?’\n" +
+        world.addQest(new Quest("spravcedilny", "Správce dílny: Než ti něco dám, řekni mi jednu věc.\n" +
+                "Jaký předmět si bereš na ruce, když pracuješ v dílně?\n" +
                 "Napiš odpověď jedním slovem.", "rukavice"));
-        world.addQest(new Quest("spravceserverovny", "Správce serverovny: ‘Chci si být jistý, že chápeš, co je to heslo.’\n" +
+        world.addQest(new Quest("spravceserverovny", "Správce serverovny: Chci si být jistý, že chápeš, co je to heslo.\n" +
                 "Otázka: Co je silnější: heslo 123456 nebo K0c0ur!2026?\n" +
                 "Napiš pouze: A pro první, nebo B pro druhé.", "b"));
 
@@ -62,12 +62,12 @@ public class CreateWorld {
         world.getRoom("serverovaucebna").addNpc("spravceserveroveucebny");
         world.getRoom("vratnice").addNpc("skolnik");
 
-        world.getRoom("pocitacovaucebna").addItem("kod");
+        world.getNPC("studentvpocitacoveucebne").addItem("kod");
         world.getRoom("laborka").addItem("kyselina");
-        world.getRoom("dilna").addItem("pacidlo");
+        world.getNPC("spravcedilny").addItem("pacidlo");
         world.getRoom("kabinet").addItem("karta");
-        world.getRoom("serverovaucebna").addItem("heslo");
-        world.getRoom("vratnice").addItem("klicodkabinetu");
+        world.getNPC("spravceserveroveucebny").addItem("heslo");
+        world.getNPC("skolnik").addItem("klicodkabinetu");
 
         world.getRoom("kmenovaucebna").addExit("J", "chodba");
         world.getRoom("pocitacovaucebna").addExit("JZ","chodba");
@@ -90,10 +90,10 @@ public class CreateWorld {
         world.getNPC("studentnachodbe").setCanHelp(true);
         world.getNPC("skolnik").setRequiredItemId("kyselina");
 
-//        world.getRoom("laborka").setBlocked(true, "pacidlo", false);
+        world.getRoom("laborka").setBlocked(true, "pacidlo", false);
         world.getRoom("dilna").setBlocked(true, null, true);
-//        world.getRoom("kabinet").setBlocked(true, "klicodkabinetu", false);
-//        world.getRoom("serverovaucebna").setBlocked(true, "kod", false);
+        world.getRoom("kabinet").setBlocked(true, "klicodkabinetu", false);
+        world.getRoom("serverovaucebna").setBlocked(true, "kod", false);
     }
 
     //gson save

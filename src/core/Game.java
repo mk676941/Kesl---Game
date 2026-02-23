@@ -29,8 +29,8 @@ public class Game {
 
     public void registerCommands() {
         commands.put("go", new GoCommand(this.player, this.world));
-        commands.put("use", new UseCommand(this));
         commands.put("take", new TakeCommand(this.world, this.player));
+        commands.put("put", new PutCommand(this.world, this.player));
         commands.put("talk", new TalkCommand(this.player, this.world));
         commands.put("explore", new ExploreCommand(this.world, this.player));
         commands.put("backpack", new BackpackCommand(this.player, this.world));
@@ -164,8 +164,8 @@ public class Game {
         Scanner sc = new Scanner(System.in);
 
         while (running) {
-            System.out.print(">");
-            String input = sc.nextLine();
+            System.out.print("command id>");
+            String input = sc.nextLine().toLowerCase();
             running = StartCommand(input);
         }
         endGame();
