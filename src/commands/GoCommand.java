@@ -1,4 +1,5 @@
 package commands;
+import core.Item;
 import core.Player;
 import core.World;
 
@@ -40,10 +41,21 @@ public class GoCommand implements Command {
                     player.setHasWon(true);
                     return false;
                 } else {
+                    String itemId1 = "karta";
+                    String itemId2 = "heslo";
+
+                    Item item1 = world.getItem(itemId1);
+                    Item item2 = world.getItem(itemId2);
+
                     System.out.println("Nemáš potřebné věci k úniku, potřebuješ:");
                     System.out.println("---------------------------------------------------");
-                    System.out.println(">>> " + world.getItem("karta").getName());
-                    System.out.println(">>> " + world.getItem("heslo").getName());
+                    System.out.printf(">>> item id: %-15s item name: %s%n",
+                            itemId1,
+                            item1.getName());
+                    System.out.printf(">>> item id: %-15s item name: %s%n",
+                            itemId2,
+                            item2.getName());
+                    System.out.println();
                 }
             }
 
@@ -70,11 +82,17 @@ public class GoCommand implements Command {
                 } else {
                     System.out.println("Do místnosti " + world.getRoom(exit).getName() + " se nemůžeš dostat. Potřebuješ:");
                     System.out.println("---------------------------------------------------");
-                    if (world.getRoom(exit).getRequiredItemId()!=null) {
-                        System.out.println(world.getItem(">>> " + world.getRoom(exit).getRequiredItemId()).getName());
+                    String requiredItemId = world.getRoom(exit).getRequiredItemId();
+
+                    if (requiredItemId != null) {
+                        Item reqitem = world.getItem(requiredItemId);
+
+                        System.out.printf(">>> item id: %-15s item name: %s%n",
+                                requiredItemId,
+                                reqitem.getName());
                     }
                     if (world.getRoom(exit).isRequiredHelp()) {
-                        System.out.println("Pomoc od některého NPC.");
+                        System.out.println("Pomoc s odsunutím skříně od některého NPC.");
                     }
                 }
             } else {

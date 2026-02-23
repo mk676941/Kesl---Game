@@ -24,7 +24,9 @@ public class BackpackCommand implements Command {
             System.out.println("---------------------------------------------------");
             for (String itemId : player.getInventory().keySet()) {
                 Item item = world.getItem(itemId);
-                System.out.println(">>> " + item.getName());
+                System.out.printf(">>> item id: %-15s item name: %s%n",
+                        itemId,
+                        item.getName());
             }
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------");

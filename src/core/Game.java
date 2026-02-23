@@ -161,10 +161,10 @@ public class Game {
         Command help = commands.get("help");
         help.execute(null);
 
-        System.out.print(">");
         Scanner sc = new Scanner(System.in);
 
         while (running) {
+            System.out.print(">");
             String input = sc.nextLine();
             running = StartCommand(input);
         }

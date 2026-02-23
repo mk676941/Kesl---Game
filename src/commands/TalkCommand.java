@@ -21,77 +21,123 @@ public class TalkCommand implements Command {
         if (room.getNpcs().isEmpty()) {
             System.out.println("V: " + room.getName() + " není žádné NPC.");
         } else {
-            String key = world.getNpcs().keySet().iterator().next();
+            String keyNPC = room.getNpcs().keySet().iterator().next();
 
-            if (key == "studentnachodbe") {
-                System.out.println(world.getNPC("studentnachodbe").getDialogue());
+            System.out.println(world.getNPC(keyNPC).getName() + ": " + world.getNPC(keyNPC).getDialogue());
+            System.out.println();
+
+            Scanner sc = new Scanner(System.in);
+
+            boolean interaction = true;
+
+            while (interaction) {
+
+                System.out.println("Menu: " + world.getNPC(keyNPC).getName());
+                System.out.println("---------------------------------------------------");
+                System.out.println("1. Vypsat inventář");
+                System.out.println("2. " + ((world.getNPC(keyNPC).getCanHelp())?"Požádat o pomoc":(world.getNPC(keyNPC).getRequiredItemId()!=null)?"Získat item":"Řešit úkol"));
+                System.out.println("3. Exit");
                 System.out.println();
+                System.out.print("Zadej číslo možnosti>");
 
-                Scanner sc = new Scanner(System.in);
+                String mainInput = sc.nextLine();
 
-                boolean interaction = true;
-
-                while (interaction) {
-
-                    System.out.println("Menu:");
-                    System.out.println("---------------------------------------------------");
-                    System.out.println("1. Inventář");
-                    System.out.println("2. Požádat o pomoc");
-                    System.out.println("3. Exit");
-                    System.out.println();
-                    System.out.print("Zadej číslo možnosti>");
-
-                    int mainInput = sc.nextInt();
-//TODO dopsat switche
-                    switch (mainInput) {
-                        case 1:
-                            boolean invt = true;
-
-                            while (invt) {
-                                System.out.println("1. Dát item");
-                                System.out.println("2. Vzít item");
-                                System.out.println("3. Zpět");
-                                int i = sc.nextInt();
-
-                                switch (i) {
-                                    case 1:
-                                        if (world.getNPC(key).getItems().isEmpty()) {
-                                            System.out.println("Inventář NPC je prázdný.");
-                                        } else {
-                                            System.out.println("Obsah inventáře NPC:");
-                                            System.out.println("---------------------------------------------------");
-                                            for (String itemId : world.getNPC(key).getItems().keySet()) {
-                                                Item item = world.getItem(itemId);
-                                                System.out.println(">>> " + item.getName());
-                                            }
-                                        }
-                                }
+                switch (mainInput) {
+                    case "1":
+                        if (world.getNPC(keyNPC).getItems().isEmpty()) {
+                            System.out.println("Inventář NPC je prázdný.");
+                        } else {
+                            System.out.println("Obsah inventáře NPC:");
+                            System.out.println("---------------------------------------------------");
+                            for (String itemId : world.getNPC(keyNPC).getItems().keySet()) {
+                                System.out.printf(">>> item id: %-15s item name: %s%n",
+                                        itemId,
+                                        world.getItem(itemId).getName());
                             }
-                            break;
-                        case 2:
+                        }
+                        break;
+                    case "2":
+                        if (world.getNPC(keyNPC).getCanHelp()) {
+                            //help
                             if (!player.getHasHelp()) {
                                 player.setHasHelp(true);
                                 System.out.println("Dobrá, hned jdu odsunout tu skříň, která blokuje dílnu.");
                             } else {
                                 System.out.println("Už jsem skříň odsunul.");
                             }
-                            break;
-                        case 3:
-                            interaction = false;
-                            break;
-                        default:
-                            interaction = true;
-                            System.out.println("Neplatný vstup.");
-                    }
-                    break;
+                        } else {
+                            //reward
+                            boolean canWork = true;
+                            if (player.isInventoryFull()) {
+                                System.out.println("Nemůžeš získat odměnu. Nemáš místo v batohu.");
+                                canWork = false;
+                            }
+                            if (world.getNPC(keyNPC).getItems().isEmpty()) {
+                                System.out.println("Odměnu jsi už získal.");
+                                canWork = false;
+                            }
+
+                            if (canWork) {
+                                if (world.getNPC(keyNPC).getRequiredItemId() != null) {
+                                    //required item
+                                    if (!player.hasItem(world.getNPC(keyNPC).getRequiredItemId())) {
+                                        System.out.print("Nemůžeš získat můj item. Nemáš v inventáři na výměnu: ");
+                                        System.out.printf("item id: %-15s item name: %s%n",
+                                                world.getItem(world.getNPC(keyNPC).getRequiredItemId()),
+                                                world.getItem(world.getNPC(keyNPC).getRequiredItemId()).getName());
+                                    } else {
+                                        String rewardId = world.getNPC(keyNPC).getItems().keySet().iterator().next();
+                                        player.addItem(rewardId);
+                                        world.getNPC(keyNPC).getItems().remove(rewardId);
+                                    }
+                                } else {
+                                    //quest
+                                    boolean working = true;
+
+                                    while (working) {
+                                        String questId = world.getNPC(keyNPC).getQuests().keySet().iterator().next();
+                                        System.out.println("Úkol: " + world.getQuest(questId).getQuestText());
+                                        System.out.println("---------------------------------------------------");
+                                        System.out.println("1. Odpovědět");
+                                        System.out.println("2. Exit");
+                                        System.out.println();
+                                        System.out.print("Zadej číslo možnosti>");
+
+                                        String input = sc.nextLine();
+
+                                        switch (input) {
+                                            case "1":
+                                                System.out.print(">");
+                                                String asnwer = sc.nextLine();
+                                                if (asnwer == world.getQuest(questId).getAnswer()) {
+                                                    System.out.println("Správná odpověd!");
+                                                    String rewardId = world.getNPC(keyNPC).getItems().keySet().iterator().next();
+                                                    player.addItem(rewardId);
+                                                    world.getNPC(keyNPC).getItems().remove(rewardId);
+                                                    working = false;
+                                                } else {
+                                                    System.out.println("Špatná odpověď. Zkus to znovu.");
+                                                }
+                                                break;
+                                            case "2":
+                                                working = false;
+                                                break;
+                                            default:
+                                                System.out.println("Neplatný vstup.");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    case "3":
+                        interaction = false;
+                        break;
+                    default:
+                        System.out.println("Neplatný vstup.");
                 }
-            }
-
-            if (key == "skolnik") {
-
             }
         }
         return true;
     }
-    //TODO jak ziskat studenta z dane mistnosti
 }
