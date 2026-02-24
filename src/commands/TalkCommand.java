@@ -13,9 +13,16 @@ public class TalkCommand implements Command {
         this.world = world;
     }
 
+    /**
+     * Otevre menu interakce s npc
+     * @param args - commandid
+     * @return boolean
+     */
     @Override
     public boolean execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
+
+        //kontrola prozkoumani
         if (!world.getRoom(player.getCurrentRoom()).isExplored()) {
             System.out.println("Místnost není prozkoumaná.");
             System.out.println("----------------------------------------------------------------------------------------------------------------");
@@ -24,6 +31,7 @@ public class TalkCommand implements Command {
 
         Room room = world.getRoom(player.getCurrentRoom());
 
+        //je v mistnosti npc?
         if (room.getNpcs().isEmpty()) {
             System.out.println("V místnosti: " + room.getName() + " není žádné NPC.");
         } else {
@@ -152,3 +160,4 @@ public class TalkCommand implements Command {
         return true;
     }
 }
+//TODO dodelat komentare

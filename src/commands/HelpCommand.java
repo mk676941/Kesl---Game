@@ -14,6 +14,11 @@ public class HelpCommand implements Command {
         this.world = world;
     }
 
+    /**
+     * Vypise napovedu
+     * @param args - commandid
+     * @return boolean
+     */
     @Override
     public boolean execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
@@ -21,12 +26,14 @@ public class HelpCommand implements Command {
         System.out.println();
         System.out.println("Některé místnosti jsou nepřístupné. Ke vstupu potřebuješ buď nějaký item, nebo pomoc některého z NPC.");
         System.out.println();
+        //vypis commandu
         System.out.println("Seznam všech commandů. Voláš je pomocí command id:");
         System.out.println("---------------------------------------------------");
         for (String commandId : game.getCommands().keySet()) {
             System.out.println(">>> command id: " + commandId);
         }
         System.out.println();
+        //vypis itemu
         System.out.println("Seznam všech itemů. Pracuješ s nima pomocí item id:");
         System.out.println("---------------------------------------------------");
         for (String itemId : world.getItems().keySet()) {

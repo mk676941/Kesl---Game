@@ -9,12 +9,10 @@ public class Room {
     private String description;
 
     private Map<String, String> exits;
-
     private Map<String, String> items;
     private Map<String, String> npcs;
 
     private boolean explored;
-
     private boolean blocked;
     private String requiredItemId;
     private boolean requiredHelp;
@@ -52,11 +50,8 @@ public class Room {
     public String getExit(String direction) {
         return exits.get(direction);
     }
-    public Map<String, String> getExits() {
-        return exits;
-    }
 
-    //exploreing
+    //exploring
     public void explore() {
         this.explored = true;
     }
@@ -92,16 +87,13 @@ public class Room {
     public Map<String, String> getNpcs() {
         return npcs;
     }
-    public String getNpc(String npcId) {
-        return npcs.get(npcId);
-    }
     public boolean hasNpc() {
         if (npcs.isEmpty()){
             return false;
         } else return true;
     }
 
-    //enter management
+    //blocking management
     public boolean isBlocked() {
         return blocked;
     }

@@ -28,7 +28,7 @@ public class Quest {
         return answer;
     }
 
-    //hints management
+    //hints management (future addition)
     public void addHints (QuestState state, String hint) {
         hints.put(state, hint);
     }
@@ -36,7 +36,7 @@ public class Quest {
         return hints.get(state);
     }
 
-    //quest state management
+    //quest state management (future addition)
     public QuestState getState() {
         return state;
     }

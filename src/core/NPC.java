@@ -37,19 +37,13 @@ public class NPC {
         return name;
     }
 
-    //quests
+    //quests management
     public boolean addQuest(String quest) {
         quests.put(quest, quest);
         return true;
     }
     public Map<String, String> getQuests() {
         return quests;
-    }
-    public String getQuest(String questId) {
-        return quests.get(questId);
-    }
-    public boolean hasQuest(String questId) {
-        return quests.containsKey(questId);
     }
 
     //required item management
@@ -75,12 +69,5 @@ public class NPC {
     }
     public Map<String, String> getItems() {
         return items;
-    }
-
-    public String removeItem(String itemId) {
-        return items.remove(itemId);
-    }
-    public boolean hasItem(String itemId) {
-        return items.containsKey(itemId);
     }
 }

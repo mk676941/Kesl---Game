@@ -13,6 +13,11 @@ public class GoCommand implements Command {
         this.world = world;
     }
 
+    /**
+     * Presune hrace do jine mistnosti podle zadaneho smeru
+     * @param args - commandid, smer
+     * @return boolean
+     */
     @Override
     public boolean execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
@@ -28,13 +33,12 @@ public class GoCommand implements Command {
         }
 
         String direction = args[1].toUpperCase();
-
         String exit = world.getRoom(player.getCurrentRoom()).getExit(direction);
 
+        //kontrola smeru
         if (exit == null) {
             System.out.println("Tímto směrem není žádná cesta.");
         } else {
-
             //hlavni vchod
             if (exit=="hlavnivchod") {
                 if (player.hasItem("karta")&&player.hasItem("heslo")) {
@@ -75,11 +79,13 @@ public class GoCommand implements Command {
                     } else item = false;
                 } else item = true;
 
+                //presunuti
                 if (help && item) {
                     world.getRoom(exit).setBlocked(false, null, false);
                     player.setCurrentRoom(exit);
                     System.out.println("Přesunul jsi se do: " + world.getRoom(exit).getName());
                 } else {
+                    //vypis potrebneho itemu/interakce
                     System.out.println("Do místnosti " + world.getRoom(exit).getName() + " se nemůžeš dostat. Potřebuješ:");
                     System.out.println("---------------------------------------------------");
                     String requiredItemId = world.getRoom(exit).getRequiredItemId();
@@ -96,7 +102,6 @@ public class GoCommand implements Command {
                     }
                 }
             } else {
-
                 //odblokovana mistnost
                 player.setCurrentRoom(exit);
                 System.out.println("Přesunul jsi se do: " + world.getRoom(exit).getName());

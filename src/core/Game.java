@@ -18,15 +18,12 @@ public class Game {
         this.createWorld = new CreateWorld(world);
         createWorld.fillWorld();
         registerCommands();
-        createWorld.saveWorld();
-
-//        for (String itemId : world.getItems().keySet()) {
-//            Item item = world.getItem(itemId);
-//            player.addItem(item.getId());
-//        }
+        //createWorld.saveWorld();
     }
 
-
+    /**
+     * Vytvori a ulozi commandy
+     */
     public void registerCommands() {
         commands.put("go", new GoCommand(this.player, this.world));
         commands.put("take", new TakeCommand(this.world, this.player));
@@ -39,6 +36,11 @@ public class Game {
         commands.put("map", new MapCommand(this.world, this.player));
     }
 
+    /**
+     * Kontroluje vstup hrace a vola execute metody commandu
+     * @param key - vstup hrace
+     * @return boolean
+     */
     public boolean StartCommand(String key) {
         String[] parts = key.split("\\s+");
 
@@ -51,6 +53,9 @@ public class Game {
         return command.execute(parts);
     }
 
+    /**
+     * Spusti hru, vypise uvodni text
+     */
     public void run () {
         boolean running = true;
 
@@ -163,6 +168,7 @@ public class Game {
 
         Scanner sc = new Scanner(System.in);
 
+        //main loop
         while (running) {
             System.out.print("command id>");
             String input = sc.nextLine().toLowerCase();
@@ -171,6 +177,9 @@ public class Game {
         endGame();
     }
 
+    /**
+     * Ukonci hru
+     */
     public void endGame () {
         if (player.getHasWon()){
             System.out.println("Uspěšně jsi odemkl hlavní vchod!");
@@ -180,6 +189,7 @@ public class Game {
         System.out.println("Konec hry.");
     }
 
+    //commands
     public Map<String, Command> getCommands() {
         return commands;
     }

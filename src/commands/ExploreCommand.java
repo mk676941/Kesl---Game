@@ -11,6 +11,14 @@ public class ExploreCommand implements Command {
         this.player = player;
     }
 
+    /**
+     * Prozkouma mistnost
+     * Vypise NPC v mistnosti
+     * Vypise itemy v mistnosti
+     * Odemkne commandy talk, take, put
+     * @param args - commandid
+     * @return boolean
+     */
     @Override
     public boolean execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
@@ -38,7 +46,7 @@ public class ExploreCommand implements Command {
             System.out.println();
         }
 
-        //vypis itemu v mistnosti
+        //vypis itemu
         if (room.hasItem()) {
             System.out.println("V místnosti je:");
             System.out.println("---------------------------------------------------");

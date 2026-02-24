@@ -12,9 +12,15 @@ public class PutCommand implements Command {
         this.player = player;
     }
 
+    /**
+     * Ulozi item z inventare hrace do inventare mistnosti
+     * @param args - commandid, item
+     * @return boolean
+     */
     @Override
     public boolean execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
+
         //kontrola delky pole
         if (args.length < 2) {
             System.out.println("Nezadal jsi item.");
@@ -22,18 +28,20 @@ public class PutCommand implements Command {
             return true;
         }
 
+        //kontrola prozkoumani
         if (!world.getRoom(player.getCurrentRoom()).isExplored()) {
             System.out.println("Místnost není prozkoumaná.");
             return true;
         }
 
         String itemId = args[1].toLowerCase();
-
         boolean item = player.hasItem(itemId);
 
+        //kontrola vstupu
         if (item == false) {
             System.out.println("Item nebyl nalezen.");
         } else {
+            //ulozeni itemu do inventare mistnosti, odebrani itemu z inventare hrace
             world.getRoom(player.getCurrentRoom()).addItem(itemId);
             player.removeItem(itemId);
             System.out.println("Item byl uložen do místnosti.");

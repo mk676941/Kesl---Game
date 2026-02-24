@@ -1,5 +1,4 @@
 package commands;
-import core.Game;
 import core.Item;
 import core.Player;
 import core.World;
@@ -14,12 +13,20 @@ public class BackpackCommand implements Command {
         this.world = world;
     }
 
+    /**
+     * Vypise inventar hrace
+     * @param args - commandid
+     * @return boolean
+     */
     @Override
     public boolean execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
+
+        //prazdny inventar
         if (player.getCapacity()==0){
             System.out.println("Batoh je prázdný.");
         } else {
+            //vypis inventare
             System.out.println("Obsah tvého batohu:");
             System.out.println("---------------------------------------------------");
             for (String itemId : player.getInventory().keySet()) {
