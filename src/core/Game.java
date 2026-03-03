@@ -16,9 +16,10 @@ public class Game {
         this.player = new Player(3);
         this.world = new World();
         this.createWorld = new CreateWorld(world);
-        createWorld.fillWorld();
-        registerCommands();
+        //createWorld.fillWorld();
         //createWorld.saveWorld();
+        createWorld.loadWorld("/world.json");
+        registerCommands();
     }
 
     /**

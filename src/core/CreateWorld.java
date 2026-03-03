@@ -3,6 +3,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -107,28 +109,32 @@ public class CreateWorld {
 
     /**
      * Ulozi json soubor ze vsech parametru
+     * Pouze pro ulozeni zakladniho jsonu ve resources
      */
     public void saveWorld() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(world);
         try {
-            Files.write(Paths.get("C:/Users/matej/Downloads/test.json"), json.getBytes(StandardCharsets.UTF_8));
+            Files.write(Paths.get("./resources/world.json"),
+                    json.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * Nacte svet z json souboru
-     */
-    public void loadWorld() {
+    * Nacte svet z json souboru
+    */
+    public void loadWorld(String resourcePath) {
         Gson gson = new Gson();
-        String json;
-        try {
-            json = Files.readString(Paths.get("C:/Users/matej/Downloads/test.json"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        try (InputStream is = getClass().getResourceAsStream(resourcePath)) {
+            if (is == null) {
+                throw new IllegalStateException("Nenalezen resource: " + resourcePath +
+                        " - Zkontrolujte, že soubor je v resources a před cestou je /.");
+            }
+            world = gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), World.class);
+        } catch (Exception e) {
+            throw new RuntimeException("Chyba při načítání JSON: " + e.getMessage());
         }
-        world = gson.fromJson(json, World.class);
     }
 }

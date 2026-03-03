@@ -1,0 +1,248 @@
+{
+  "rooms": {
+    "kmenovaucebna": {
+      "id": "kmenovaucebna",
+      "name": "Kmenová učebna",
+      "description": "Výchozí místnost hráče",
+      "exits": {
+        "J": "chodba"
+      },
+      "items": {},
+      "npcs": {},
+      "explored": false,
+      "blocked": false,
+      "requiredHelp": false
+    },
+    "vratnice": {
+      "id": "vratnice",
+      "name": "Vrátnice",
+      "description": "Školníkuv bejvák",
+      "exits": {
+        "SV": "chodba"
+      },
+      "items": {},
+      "npcs": {
+        "skolnik": "skolnik"
+      },
+      "explored": false,
+      "blocked": false,
+      "requiredHelp": false
+    },
+    "chodba": {
+      "id": "chodba",
+      "name": "Chodba",
+      "description": "Hlavní propojovací prostor",
+      "exits": {
+        "JZ": "vratnice",
+        "S": "kmenovaucebna",
+        "SV": "pocitacovaucebna",
+        "V": "laborka",
+        "SZ": "kabinet",
+        "Z": "dilna",
+        "J": "hlavnivchod",
+        "JV": "serverovaucebna"
+      },
+      "items": {},
+      "npcs": {
+        "studentnachodbe": "studentnachodbe"
+      },
+      "explored": false,
+      "blocked": false,
+      "requiredHelp": false
+    },
+    "laborka": {
+      "id": "laborka",
+      "name": "Laborka",
+      "description": "Smradlavá místnost chemie",
+      "exits": {
+        "Z": "chodba"
+      },
+      "items": {
+        "kyselina": "kyselina"
+      },
+      "npcs": {},
+      "explored": false,
+      "blocked": true,
+      "requiredItemId": "pacidlo",
+      "requiredHelp": false
+    },
+    "pocitacovaucebna": {
+      "id": "pocitacovaucebna",
+      "name": "Počítačová učebna",
+      "description": "beep-beep-beep",
+      "exits": {
+        "JZ": "chodba"
+      },
+      "items": {},
+      "npcs": {
+        "studentvpocitacoveucebne": "studentvpocitacoveucebne"
+      },
+      "explored": false,
+      "blocked": false,
+      "requiredHelp": false
+    },
+    "kabinet": {
+      "id": "kabinet",
+      "name": "Kabinet",
+      "description": "Kabinet zlé třídní",
+      "exits": {
+        "JV": "chodba"
+      },
+      "items": {
+        "karta": "karta"
+      },
+      "npcs": {},
+      "explored": false,
+      "blocked": true,
+      "requiredItemId": "klic",
+      "requiredHelp": false
+    },
+    "dilna": {
+      "id": "dilna",
+      "name": "Dílna",
+      "description": "Dílna plná harampádí",
+      "exits": {
+        "V": "chodba"
+      },
+      "items": {},
+      "npcs": {
+        "spravcedilny": "spravcedilny"
+      },
+      "explored": false,
+      "blocked": true,
+      "requiredHelp": true
+    },
+    "hlavnivchod": {
+      "id": "hlavnivchod",
+      "name": "Hlavní vchod",
+      "description": "Úniková cesta",
+      "exits": {
+        "S": "chodba"
+      },
+      "items": {},
+      "npcs": {},
+      "explored": false,
+      "blocked": false,
+      "requiredHelp": false
+    },
+    "serverovaucebna": {
+      "id": "serverovaucebna",
+      "name": "Serverová učebna",
+      "description": "Školní serverovna",
+      "exits": {
+        "SZ": "chodba"
+      },
+      "items": {},
+      "npcs": {
+        "spravceserveroveucebny": "spravceserveroveucebny"
+      },
+      "explored": false,
+      "blocked": true,
+      "requiredItemId": "kod",
+      "requiredHelp": false
+    }
+  },
+  "items": {
+    "heslo": {
+      "id": "heslo",
+      "name": "Heslo hlavních dveří"
+    },
+    "kod": {
+      "id": "kod",
+      "name": "3-číselný kód"
+    },
+    "pacidlo": {
+      "id": "pacidlo",
+      "name": "Páčidlo"
+    },
+    "karta": {
+      "id": "karta",
+      "name": "Karta hlavních dveří"
+    },
+    "klic": {
+      "id": "klic",
+      "name": "Klíč od kabinetu"
+    },
+    "kyselina": {
+      "id": "kyselina",
+      "name": "Kyselina sírová"
+    }
+  },
+  "npcs": {
+    "studentvpocitacoveucebne": {
+      "id": "studentvpocitacoveucebne",
+      "name": "Student v počítačové učebně",
+      "dialogue": "Ahoj. Jestli chceš získat 3-číselný kód, budeš si ho muset zasloužit.",
+      "canHelp": false,
+      "items": {
+        "kod": "kod"
+      },
+      "quests": {
+        "pcstudent": "pcstudent"
+      }
+    },
+    "studentnachodbe": {
+      "id": "studentnachodbe",
+      "name": "Student na chodbě",
+      "dialogue": "Ahoj, jak ti mohu pomoci?",
+      "canHelp": true,
+      "items": {},
+      "quests": {}
+    },
+    "skolnik": {
+      "id": "skolnik",
+      "name": "Školník",
+      "dialogue": "Arghh... Jestli chceš klíč od kabinetu tak mi přines kyselinu z laborky",
+      "requiredItemId": "kyselina",
+      "canHelp": false,
+      "items": {
+        "klic": "klic"
+      },
+      "quests": {}
+    },
+    "spravcedilny": {
+      "id": "spravcedilny",
+      "name": "Správce dílny",
+      "dialogue": "Konečně někdo odsunul tu skřín! Děkuji, chceš získat páčidlo?",
+      "canHelp": false,
+      "items": {
+        "pacidlo": "pacidlo"
+      },
+      "quests": {
+        "spravcedilny": "spravcedilny"
+      }
+    },
+    "spravceserveroveucebny": {
+      "id": "spravceserveroveucebny",
+      "name": "Správce serverové učebny",
+      "dialogue": "Koukám že jsi zjistil kód. Zvládneš další úlohu pro získání hesla?",
+      "canHelp": false,
+      "items": {
+        "heslo": "heslo"
+      },
+      "quests": {
+        "spravceserverovny": "spravceserverovny"
+      }
+    }
+  },
+  "quests": {
+    "spravceserverovny": {
+      "questId": "spravceserverovny",
+      "questText": "Správce serverovny: Chci si být jistý, že chápeš, co je to heslo.\nOtázka: Co je silnější: heslo 123456 nebo K0c0ur!2026?\nNapiš pouze: A pro první, nebo B pro druhé.",
+      "answer": "b",
+      "state": "NOT_STARTED"
+    },
+    "pcstudent": {
+      "questId": "pcstudent",
+      "questText": "Na monitoru svítí nápis: Pro přístup zadej správné slovo.\nNápověda: Jsem začátek i konec abecedy. Bez mě bys nic nenapsal. Co jsem?\nZadej odpověď jedním slovem.",
+      "answer": "pismeno",
+      "state": "NOT_STARTED"
+    },
+    "spravcedilny": {
+      "questId": "spravcedilny",
+      "questText": "Správce dílny: Než ti něco dám, řekni mi jednu věc.\nJaký předmět si bereš na ruce, když pracuješ v dílně?\nNapiš odpověď jedním slovem.",
+      "answer": "rukavice",
+      "state": "NOT_STARTED"
+    }
+  }
+}
