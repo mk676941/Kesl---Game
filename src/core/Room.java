@@ -73,9 +73,7 @@ public class Room {
         return items.remove(itemId);
     }
     public boolean hasItem() {
-        if (items.isEmpty()) {
-            return false;
-        } else return true;
+        return !items.isEmpty();
     }
     public Map<String, String> getItems() {
         return items;
@@ -93,9 +91,7 @@ public class Room {
         return npcs;
     }
     public boolean hasNpc() {
-        if (npcs.isEmpty()){
-            return false;
-        } else return true;
+        return !npcs.isEmpty();
     }
 
     //blokovani

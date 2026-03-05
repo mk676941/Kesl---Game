@@ -15,23 +15,24 @@ public class TakeCommand implements Command {
     /**
      * Ulozi item z inventare mistnosti do inventare hrace
      * @param args - commandid, item
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
+    public int execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
 
         //kontrola delky pole
         if (args.length < 2) {
             System.out.println("Nezadal jsi item.");
             System.out.println("----------------------------------------------------------------------------------------------------------------");
-            return true;
+            return 4;
         }
 
         //kontrola prozkoumani
         if (!world.getRoom(player.getCurrentRoom()).isExplored()) {
             System.out.println("Místnost není prozkoumaná.");
-            return true;
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+            return 0;
         }
 
         String itemId = args[1].toLowerCase();
@@ -40,6 +41,8 @@ public class TakeCommand implements Command {
         //kontrola vstupu
         if (item == null) {
             System.out.println("Item nebyl nalezen.");
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+            return 5;
         } else {
             //kontrola kapacity inventare
             if (player.isInventoryFull()) {
@@ -52,6 +55,6 @@ public class TakeCommand implements Command {
             }
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        return true;
+        return 0;
     }
 }

@@ -16,10 +16,10 @@ public class GoCommand implements Command {
     /**
      * Presune hrace do jine mistnosti podle zadaneho smeru
      * @param args - commandid, smer
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
+    public int execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
 
         boolean help;
@@ -29,7 +29,7 @@ public class GoCommand implements Command {
         if (args.length <2) {
             System.out.println("Nezadal jsi směr.");
             System.out.println("----------------------------------------------------------------------------------------------------------------");
-            return true;
+            return 2;
         }
 
         String direction = args[1].toUpperCase();
@@ -38,12 +38,14 @@ public class GoCommand implements Command {
         //kontrola smeru
         if (exit == null) {
             System.out.println("Tímto směrem není žádná cesta.");
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+            return 3;
         } else {
             //hlavni vchod
-            if (exit=="hlavnivchod") {
+            if (exit.equals("hlavnivchod")) {
                 if (player.hasItem("karta")&&player.hasItem("heslo")) {
                     player.setHasWon(true);
-                    return false;
+                    return 9;
                 } else {
                     String itemId1 = "karta";
                     String itemId2 = "heslo";
@@ -108,6 +110,6 @@ public class GoCommand implements Command {
             }
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        return true;
+        return 0;
     }
 }

@@ -15,31 +15,34 @@ public class PutCommand implements Command {
     /**
      * Ulozi item z inventare hrace do inventare mistnosti
      * @param args - commandid, item
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
+    public int execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
 
         //kontrola delky pole
         if (args.length < 2) {
             System.out.println("Nezadal jsi item.");
             System.out.println("----------------------------------------------------------------------------------------------------------------");
-            return true;
+            return 4;
         }
 
         //kontrola prozkoumani
         if (!world.getRoom(player.getCurrentRoom()).isExplored()) {
             System.out.println("Místnost není prozkoumaná.");
-            return true;
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+            return 0;
         }
 
         String itemId = args[1].toLowerCase();
         boolean item = player.hasItem(itemId);
 
         //kontrola vstupu
-        if (item == false) {
+        if (!item) {
             System.out.println("Item nebyl nalezen.");
+            System.out.println("----------------------------------------------------------------------------------------------------------------");
+            return 5;
         } else {
             //ulozeni itemu do inventare mistnosti, odebrani itemu z inventare hrace
             world.getRoom(player.getCurrentRoom()).addItem(itemId);
@@ -47,6 +50,6 @@ public class PutCommand implements Command {
             System.out.println("Item byl uložen do místnosti.");
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        return true;
+        return 0;
     }
 }

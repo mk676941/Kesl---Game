@@ -17,10 +17,10 @@ public class HelpCommand implements Command {
     /**
      * Vypise napovedu
      * @param args - commandid
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
+    public int execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
         System.out.println("Aby jsi úspěšně unikl z Ječné, potřebuješ odemknout hlavní vchod pomocí:\n>>> Karty hlavních dveří\n>>> Hesla hlavních dveří");
         System.out.println();
@@ -43,6 +43,6 @@ public class HelpCommand implements Command {
                     item.getName());
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        return true;
+        return 0;
     }
 }

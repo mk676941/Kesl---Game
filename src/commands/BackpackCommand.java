@@ -16,15 +16,16 @@ public class BackpackCommand implements Command {
     /**
      * Vypise inventar hrace
      * @param args - commandid
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
+    public int execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
 
         //prazdny inventar
-        if (player.getCapacity()==0){
+        if (player.isInventoryEmpty()){
             System.out.println("Batoh je prázdný.");
+
         } else {
             //vypis inventare
             System.out.println("Obsah tvého batohu:");
@@ -37,6 +38,6 @@ public class BackpackCommand implements Command {
             }
         }
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        return true;
+        return 0;
     }
 }

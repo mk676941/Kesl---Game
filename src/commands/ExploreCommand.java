@@ -17,10 +17,10 @@ public class ExploreCommand implements Command {
      * Vypise itemy v mistnosti
      * Odemkne commandy talk, take, put
      * @param args - commandid
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
+    public int execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
 
         Room room = world.getRoom(player.getCurrentRoom());
@@ -59,6 +59,6 @@ public class ExploreCommand implements Command {
         } else System.out.println("V místnosti není žádný item.");
 
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        return true;
+        return 0;
     }
 }

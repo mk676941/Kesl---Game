@@ -16,10 +16,10 @@ public class MapCommand implements Command {
     /**
      * Vypise mapu sveta
      * @param args - commandid
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
+    public int execute(String[] args) {
         System.out.println("----------------------------------------------------------------------------------------------------------------");
 
         System.out.println("   +-------------------+   +-----------------+   +-------------------+\n" +
@@ -53,6 +53,6 @@ public class MapCommand implements Command {
         //kde je hrac
         System.out.println("Nacházíš se v: " + world.getRoom(player.getCurrentRoom()).getName());
         System.out.println("----------------------------------------------------------------------------------------------------------------");
-        return true;
+        return 0;
     }
 }

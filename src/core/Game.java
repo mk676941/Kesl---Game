@@ -47,16 +47,16 @@ public class Game {
     /**
      * Kontroluje vstup hrace a vola execute metody commandu
      * @param key - vstup hrace
-     * @return boolean
+     * @return int
      */
-    public boolean startCommand(String key) {
+    public int startCommand(String key) {
         String[] parts = key.split("\\s+");
 
         Command command = commands.get(parts[0]);
 
         if (command == null) {
             System.out.println("Neplatný příkaz");
-            return true;
+            return 1;
         }
         return command.execute(parts);
     }
@@ -64,8 +64,8 @@ public class Game {
     /**
      * Spusti hru, vypise uvodni text
      */
-    public void run () {
-        boolean running = true;
+    public int run () {
+        int running = 0;
 
         System.out.println("                                                                                                                                                      \n" +
                 "                                                                                                                                                      \n" +
@@ -177,35 +177,41 @@ public class Game {
         Scanner sc = new Scanner(System.in);
 
         //hlavni loop
-        while (running) {
+        while (running!=9) {
             System.out.print("command id>");
             String input = sc.nextLine().toLowerCase();
             running = startCommand(input);
         }
-        endGame();
+        return endGame();
     }
 
     /**
      * Ukonci hru
      */
-    public void endGame () {
+    public int endGame () {
         if (player.getHasWon()){
             System.out.println("Uspěšně jsi odemkl hlavní vchod!");
             System.out.println("----------------------------------------------------------------------------------------------------------------");
             System.out.println("Gratuluji, vyhrál jsi!");
-        } else System.out.println("Hodně štěstí příště.");
-        System.out.println("Konec hry.");
+            System.out.println("Konec hry.");
+            return 0;
+        } else {
+            System.out.println("Hodně štěstí příště.");
+            System.out.println("Konec hry.");
+            return 9;
+        }
     }
 
     //commandy
     public Map<String, Command> getCommands() {
         return commands;
     }
-    public Command getCommand(String commandId) {
-        return commands.get(commandId);
-    }
 
-    public CreateWorld getCreateWorld() {
-        return createWorld;
+    //gettery pro testy
+    public Player getPlayer() {
+        return player;
+    }
+    public World getWorld() {
+        return world;
     }
 }

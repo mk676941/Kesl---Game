@@ -49,6 +49,9 @@ public class Player {
     public int getCapacity() {
         return capacity;
     }
+    public boolean isInventoryEmpty() {
+            return inventory.size() == 0;
+    }
 
     //aktualni mistnost
     public String getCurrentRoom() {

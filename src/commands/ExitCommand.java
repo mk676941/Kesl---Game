@@ -7,10 +7,11 @@ public class ExitCommand implements Command {
     /**
      * Ukonci hru
      * @param args - commandid
-     * @return boolean
+     * @return int
      */
     @Override
-    public boolean execute(String[] args) {
-        return false;
+    public int execute(String[] args) {
+        System.out.println("----------------------------------------------------------------------------------------------------------------");
+        return 9;
     }
 }
