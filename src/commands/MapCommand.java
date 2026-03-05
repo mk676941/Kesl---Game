@@ -3,6 +3,11 @@ package commands;
 import core.Player;
 import core.World;
 
+/**
+ * Command pro vykresleni mapy sveta.
+ * Obsahuje execute pro vykresleni mapy.
+ * @author Matej Kesl
+ */
 public class MapCommand implements Command {
 
     private World world;
@@ -14,8 +19,9 @@ public class MapCommand implements Command {
     }
 
     /**
-     * Vypise mapu sveta
-     * @param args - commandid
+     * Vykresli mapu mistnosti a jak jsou propojene.
+     * Vypise aktualni pozici hrace.
+     * @param args commandId
      * @return int
      */
     @Override

@@ -1,8 +1,9 @@
 package core;
 
 /**
- * Trida itemu
- * Obsahuje metody pro praci s vlastnostmi itemu
+ * Trida itemu.
+ * Slouzi k praci s vlastnostmi itemu.
+ * @author Matej Kesl
  */
 public class Item {
     private String id;

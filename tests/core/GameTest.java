@@ -8,8 +8,8 @@ import java.io.ByteArrayInputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Testovaci trida pro CreateWorld
- * Testuje navratove hodnoty metody startCommand
+ * Testovaci trida pro CreateWorld.
+ * Testuje navratove hodnoty metody startCommand.
  */
 class GameTest {
 
@@ -17,7 +17,7 @@ class GameTest {
 
     @BeforeEach
     /**
-     * Vytvori instanci tridy Game pred kazdym testem
+     * Vytvori instanci tridy Game pred kazdym testem.
      */
     void setUp() {
         game = new Game();
@@ -25,7 +25,7 @@ class GameTest {
 
     @Test
     /**
-     * Testuje zda startCommand vraci 0 kdyz uzivatel zada platny command
+     * Testuje zda startCommand vraci 0 kdyz uzivatel zada platny command.
      */
     void startValidCommand() {
         String[] commands = {"backpack", "go j", "explore", "help", "map", "put karta", "take klic"};
@@ -41,7 +41,7 @@ class GameTest {
 
     @Test
     /**
-     * Testuje zda startCommand vraci 9 kdyz uzivatel zada ExitCcommand
+     * Testuje zda startCommand vraci 9 kdyz uzivatel zada ExitCcommand.
      */
     void startExitCommand() {
         int result = game.startCommand("exit");
@@ -51,7 +51,7 @@ class GameTest {
 
     @Test
     /**
-     * Testuje zda startCommand vraci 1 kdyz uzivatel zada neplatny command
+     * Testuje zda startCommand vraci 1 kdyz uzivatel zada neplatny command.
      */
     void startInvalidCommand() {
         int result = game.startCommand("neexistuje");
@@ -60,24 +60,28 @@ class GameTest {
 
     @Test
     /**
-     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro GoCommand
+     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro GoCommand.
      */
     void startGoCommand() {
         int result;
         String[] commands = {"go j", "go", "go s", "go j"};
 
+        //presun funguje
         game.getPlayer().setCurrentRoom("kmenovaucebna");
         result = game.startCommand(commands[0]);
         assertEquals(0, result,  commands[0] + " Command by měl vracet 0.");
 
+        //nezadany smer
         game.getPlayer().setCurrentRoom("kmenovaucebna");
         result = game.startCommand(commands[1]);
         assertEquals(2, result,  commands[1] + " Command by měl vracet 2.");
 
+        //mistnost nema exit v zadanem smeru
         game.getPlayer().setCurrentRoom("kmenovaucebna");
         result = game.startCommand(commands[2]);
         assertEquals(3, result,  commands[2] + " Command by měl vracet 3.");
 
+        //presun do hlavniho vchodu
         game.getPlayer().setCurrentRoom("chodba");
         game.getPlayer().addItem("heslo");
         game.getPlayer().addItem("karta");
@@ -87,65 +91,76 @@ class GameTest {
 
     @Test
     /**
-     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro TakeCommand
+     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro TakeCommand.
      */
     void startTakeCommand() {
         int result;
         String[] commands = {"take", "take a", "take pacidlo"};
         game.getWorld().getRoom(game.getPlayer().getCurrentRoom()).addItem("pacidlo");
 
+        //nezdany item
         result = game.startCommand(commands[0]);
         assertEquals(4, result, commands[0] + " Command by měl vracet 4.");
 
+        //mistnost neni prozkoumana
         result = game.startCommand(commands[1]);
         assertEquals(0, result, commands[1] + " Command by měl vracet 0.");
 
+        //item nebyl nalezen
         game.getWorld().getRoom(game.getPlayer().getCurrentRoom()).explore();
         result = game.startCommand(commands[1]);
         assertEquals(5, result, commands[1] + " Command by měl vracet 5.");
 
+        //uspesne sebrani
         result = game.startCommand(commands[2]);
         assertEquals(0, result, commands[2] + " Command by měl vracet 0.");
     }
 
     @Test
     /**
-     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro PutCommand
+     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro PutCommand.
      */
     void startPutCommand() {
         int result;
         String[] commands = {"put", "put a", "put pacidlo"};
         game.getPlayer().addItem("pacidlo");
 
+        //nezdany item
         result = game.startCommand(commands[0]);
         assertEquals(4, result, commands[0] + " Command by měl vracet 4.");
 
+        //mistnost neni prozkoumana
         result = game.startCommand(commands[1]);
         assertEquals(0, result, commands[1] + " Command by měl vracet 0.");
 
+        //item nebyl nalezen
         game.getWorld().getRoom(game.getPlayer().getCurrentRoom()).explore();
         result = game.startCommand(commands[1]);
         assertEquals(5, result, commands[1] + " Command by měl vracet 5.");
 
+        //uspesne sebrani
         result = game.startCommand(commands[2]);
         assertEquals(0, result, commands[2] + " Command by měl vracet 0.");
     }
 
     @Test
     /**
-     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro TalkCommand
+     * Testuje zda startCommand vraci ruzne navratove hodnoty podle vstupu uzivatele pro TalkCommand.
      */
     void startTalkCommand() {
         int result;
         String[] commands = {"talk", "talk", "talk"};
 
+        //mistnost neni prozkoumana
         result = game.startCommand(commands[0]);
         assertEquals(0, result, commands[0] + " Command by měl vracet 0.");
 
+        //v mistnosti neni npc
         game.getWorld().getRoom(game.getPlayer().getCurrentRoom()).explore();
         result = game.startCommand(commands[1]);
         assertEquals(6, result, commands[1] + " Command by měl vracet 6.");
 
+        //uspesna interakce
         game.getPlayer().setCurrentRoom("chodba");
         game.getWorld().getRoom(game.getPlayer().getCurrentRoom()).explore();
         System.setIn(new ByteArrayInputStream("3".getBytes()));
@@ -155,7 +170,7 @@ class GameTest {
 
     @Test
     /**
-     * Testuje zda registerCommands vyplni mapu commandu
+     * Testuje zda registerCommands vyplni mapu commandu.
      */
     void registerCommands() {
         game.registerCommands();

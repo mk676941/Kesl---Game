@@ -4,6 +4,11 @@ import core.Item;
 import core.Player;
 import core.World;
 
+/**
+ * Command pro vypis napovedy.
+ * Obsahuje execute pro vypis napovedy.
+ * @author Matej Kesl
+ */
 public class HelpCommand implements Command {
 
     private Game game;
@@ -15,8 +20,9 @@ public class HelpCommand implements Command {
     }
 
     /**
-     * Vypise napovedu
-     * @param args - commandid
+     * Vypise napovedu jak vyhrat.
+     * Vypise seznam itemu a commandu.
+     * @param args commandId
      * @return int
      */
     @Override

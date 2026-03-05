@@ -2,6 +2,11 @@ package commands;
 import core.Player;
 import core.World;
 
+/**
+ * Command pro odlozeni itemu.
+ * Obsahuje execute pro odlozeni itemu do mistnosti.
+ * @author Matej Kesl
+ */
 public class PutCommand implements Command {
 
     private World world;
@@ -13,8 +18,8 @@ public class PutCommand implements Command {
     }
 
     /**
-     * Ulozi item z inventare hrace do inventare mistnosti
-     * @param args - commandid, item
+     * Ulozi item z inventare hrace do inventare mistnosti.
+     * @param args commandId, item
      * @return int
      */
     @Override

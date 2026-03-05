@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Trida mistnosti
- * Obsahuje metody pro praci s vlastnistmi mistnosti
- * Obsahuje metody pro praci s mapami itemu, npc, exitu
+ * Trida mistnosti.
+ * Slouzi k praci s vlastnostmi mistnosti.
+ * @author Matej Kesl
  */
 public class Room {
     private String id;

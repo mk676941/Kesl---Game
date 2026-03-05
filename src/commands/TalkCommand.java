@@ -3,6 +3,11 @@ import core.*;
 
 import java.util.Scanner;
 
+/**
+ * Command pro interakci s NPC.
+ * Obsahuje execute pro interakci a plneni ukolu NPC.
+ * @author Matej Kesl
+ */
 public class TalkCommand implements Command {
 
     private Player player;
@@ -14,8 +19,10 @@ public class TalkCommand implements Command {
     }
 
     /**
-     * Otevre menu interakce s npc
-     * @param args - commandid
+     * Otevre menu interakce s NPC.
+     * Obstarava praci s questy.
+     * Umoznuje hraci ziskat pomoc od NPC.
+     * @param args commandId
      * @return int
      */
     @Override

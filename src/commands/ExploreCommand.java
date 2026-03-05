@@ -1,6 +1,11 @@
 package commands;
 import core.*;
 
+/**
+ * Command pro prozkoumani mistnosti.
+ * Obsahuje execute pro prozkoumani mistnosti a vypis jejiho obsahu.
+ * @author Matej Kesl
+ */
 public class ExploreCommand implements Command {
 
     private World world;
@@ -12,11 +17,10 @@ public class ExploreCommand implements Command {
     }
 
     /**
-     * Prozkouma mistnost
-     * Vypise NPC v mistnosti
-     * Vypise itemy v mistnosti
-     * Odemkne commandy talk, take, put
-     * @param args - commandid
+     * Prozkouma mistnost.
+     * Vypise NPC v mistnosti.
+     * Vypise itemy v mistnosti.
+     * @param args commandId
      * @return int
      */
     @Override

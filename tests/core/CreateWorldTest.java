@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Testovaci trida pro CreateWorld
- * Testuje mozne vyjimky pri nacitani dat z jsonu pomoci metody loadWorld
+ * Testovaci trida pro CreateWorld.
+ * Testuje mozne vyjimky pri nacitani dat z JSON souboru pomoci metody loadWorld.
  */
 class CreateWorldTest {
 
@@ -15,7 +15,7 @@ class CreateWorldTest {
 
     @BeforeEach
     /**
-     * Vytvori instance tridy World a CreateWorld pred kazdym testem
+     * Vytvori instance tridy World a CreateWorld pred kazdym testem.
      */
     void setUp() {
         world = new World();
@@ -24,7 +24,7 @@ class CreateWorldTest {
 
     @Test
     /**
-     * Testuje zda se data nacetla z platneho jsonu
+     * Testuje zda se data nacetla z platneho JSON souboru.
      */
     void loadValidWorld() {
         World loaded = createWorld.loadWorld("/world.json");
@@ -38,7 +38,7 @@ class CreateWorldTest {
 
     @Test
     /**
-     * Testuje zda metoda vyhodi vyjimku kdyz json neexistuje
+     * Testuje zda metoda vyhodi vyjimku kdyz JSON neexistuje.
      */
     void loadMissingWorld() {
         assertThrows(RuntimeException.class, () -> {
@@ -48,7 +48,7 @@ class CreateWorldTest {
 
     @Test
     /**
-     * Testuje zda metoda vyhodi vyjimku kdyz jsou data v jsonu chybna
+     * Testuje zda metoda vyhodi vyjimku kdyz jsou data v JSON souboru chybna.
      */
     void loadBrokenWorld() {
         assertThrows(RuntimeException.class, () -> {

@@ -3,6 +3,11 @@ import core.Item;
 import core.Player;
 import core.World;
 
+/**
+ * Command pro presun hrace.
+ * Obsahuje execute pro presun hrace do jine mistnosti.
+ * @author Matej Kesl
+ */
 public class GoCommand implements Command {
 
     private Player player;
@@ -14,8 +19,9 @@ public class GoCommand implements Command {
     }
 
     /**
-     * Presune hrace do jine mistnosti podle zadaneho smeru
-     * @param args - commandid, smer
+     * Presune hrace do jine mistnosti podle zadaneho smeru.
+     * Presun probehne pouze pokud ma mistnost na zadany smer exit.
+     * @param args commandId, smer
      * @return int
      */
     @Override

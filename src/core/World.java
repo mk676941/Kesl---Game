@@ -3,6 +3,12 @@ package core;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Trida sveta.
+ * Slouzi k praci s vlastnostmi sveta.
+ * Obsahuje mapy vsech instanci ostatnich trid.
+ * @author Matej Kesl
+ */
 public class World {
     private Map<String, Room> rooms;
     private Map<String, Item> items;

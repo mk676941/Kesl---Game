@@ -3,6 +3,11 @@ import core.Item;
 import core.Player;
 import core.World;
 
+/**
+ * Command pro vypis inventare hrace.
+ * Obsahuje execute pro vypis vsech itemu v inventari hrace.
+ * @author Matej Kesl
+ */
 public class BackpackCommand implements Command {
 
     private Player player;
@@ -14,8 +19,8 @@ public class BackpackCommand implements Command {
     }
 
     /**
-     * Vypise inventar hrace
-     * @param args - commandid
+     * Vypise inventar hrace.
+     * @param args commandId
      * @return int
      */
     @Override

@@ -6,12 +6,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Trida s main loopem
- * Vytvori se zde instance trid Player, World, CreateWorld
- * Naplni se zde mapa commandu a world
- * Obsahuje metodu pro vytvoreni commandu
- * Obsahuje metodu pro obstaravani vstupu uzivatele
- * Obsahuje metodu pro vypis pri ukonceni kry
+ * Trida pro vytvareni a spousteni hry.
+ * Slouzi k zpracovani hlavniho vstupu uzivatele a vytvoreni commandu.
+ * Obsahuje hlavni smycku hry.
+ * @author Matej Kesl
  */
 public class Game {
     private Map<String, Command> commands;
@@ -30,7 +28,7 @@ public class Game {
     }
 
     /**
-     * Vytvori a ulozi commandy
+     * Vytvori instance trid commandu a ulozi je do mapy.
      */
     public void registerCommands() {
         commands.put("go", new GoCommand(this.player, this.world));
@@ -45,8 +43,8 @@ public class Game {
     }
 
     /**
-     * Kontroluje vstup hrace a vola execute metody commandu
-     * @param key - vstup hrace
+     * Zpracovava hlavni vstup uzivatele a vola execute metodu daneho commandu.
+     * @param key vstup uzivatele
      * @return int
      */
     public int startCommand(String key) {
@@ -62,7 +60,9 @@ public class Game {
     }
 
     /**
-     * Spusti hru, vypise uvodni text
+     * Metoda s hlavnim loopem.
+     * Vytiskne uvodni text.
+     * @return int
      */
     public int run () {
         int running = 0;
@@ -186,7 +186,8 @@ public class Game {
     }
 
     /**
-     * Ukonci hru
+     * Metoda pro vytisk pri konci hry.
+     * @return int
      */
     public int endGame () {
         if (player.getHasWon()){

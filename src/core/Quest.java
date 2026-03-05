@@ -3,8 +3,9 @@ package core;
 import java.util.Map;
 
 /**
- * Trida questu
- * Obsahuje metody pro praci s vlastnistmi questu
+ * Trida questu.
+ * Slouzi k praci s vlastnostmi questu.
+ * @author Matej Kesl
  */
 public class Quest {
     private String questId;

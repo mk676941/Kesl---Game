@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Trida npc
- * Obsahuje metody pro praci s vlastnistmi npc
- * Obsahuje metody pro praci s mapami itemu a questu
+ * Trida NPC.
+ * Slouzi k praci s vlastnostmi NPC.
+ * @author Matej Kesl
  */
 public class NPC {
     private String id;

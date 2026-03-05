@@ -10,9 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * Trida pro vytvareni sveta
- * Obsahuje metody pro praci s json souborem
- * Obsahuje metodu pro zakladni naplneni sveta
+ * Trida pro vytvareni sveta.
+ * Slouzi k naplneni zakladniho sveta a praci s JSON souborem.
+ * @author Matej Kesl
  */
 public class CreateWorld {
     private World world;
@@ -22,7 +22,7 @@ public class CreateWorld {
     }
 
     /**
-     *Vyplni zakladni svet
+     *Vyplni zakladni svet.
      */
     public void fillWorld () {
         //mistnosti
@@ -113,8 +113,8 @@ public class CreateWorld {
     }
 
     /**
-     * Ulozi json soubor ze vsech parametru
-     * Pouze pro ulozeni zakladniho jsonu ve resources
+     * Ulozi herni data do JSON souboru.
+     * @throws RuntimeException pokud nastane chyba pri zapisu do souboru
      */
     public void saveWorld() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -128,9 +128,10 @@ public class CreateWorld {
     }
 
     /**
-     * Nacte data sveta z json souboru
-     * @param resourcePath - zadany nazev json souboru
-     * @return vyplneny world
+     * Nacte herni data z JSON souboru
+     * @param resourcePath cesta k JSON souboru v resources
+     * @return naplneny world
+     * @throws RuntimeException pokud nebude nalezen resource nebo nastane chyba pri nacitani dat
      */
     public World loadWorld(String resourcePath) {
         Gson gson = new Gson();

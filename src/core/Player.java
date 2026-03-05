@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Trida hrace
- * Obsahuje metody pro praci s vlastnistmi hrace
- * Obsahuje metody pro praci s mapou inventare
+ * Trida hrace.
+ * Slouzi k praci s vlastnostmi hrace.
+ * @author Matej Kesl
  */
 public class Player {
     private Map<String, String> inventory;

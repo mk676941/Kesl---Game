@@ -1,7 +1,7 @@
 package core;
 
 /**
- * Trida pro stavy questu (zatim nevyuzita)
+ * Trida pro stavy questu (zatim nevyuzita).
  */
 public enum QuestState {
     NOT_STARTED,

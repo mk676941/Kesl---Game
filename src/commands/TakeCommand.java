@@ -2,6 +2,11 @@ package commands;
 import core.Player;
 import core.World;
 
+/**
+ * Command pro sebrani itemu.
+ * Obsahuje execute pro sebrani itemu z mistnosti.
+ * @author Matej Kesl
+ */
 public class TakeCommand implements Command {
 
     private World world;
@@ -13,8 +18,8 @@ public class TakeCommand implements Command {
     }
 
     /**
-     * Ulozi item z inventare mistnosti do inventare hrace
-     * @param args - commandid, item
+     * Ulozi item z inventare mistnosti do inventare hrace.
+     * @param args commandId, item
      * @return int
      */
     @Override
