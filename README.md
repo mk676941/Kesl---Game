@@ -9,7 +9,7 @@ Vaším cílem je uniknout ze školy hlavním vchodem.
 - Prozkoumávání různých místností  
 - Interakce s NPC  
 - Plnění úkolů  
-- Sbírání a používání předmětů  
+- Sbírání a odkládání předmětů  
 - Odemknutí hlavního vchodu pomocí karty a hesla
 
 ## Ovládání hry (Commandy)
@@ -39,10 +39,21 @@ Každý předmět má své **ID** a název:
 | `klic`     | Klíč od kabinetu                  |
 | `kyselina` | Kyselina sírová                   |
 
-## Vlastní herní data (JSON)
-- Hru lze načítat z vlastního JSON souboru.  
-- JSON musí dodržet **formát původního souboru** (např. správný typ dat: String, Array, Object).  
+## Jak spustit JAR soubor hry
+Ke spuštění hry potřebujete mít nainstalovanou Java verzi 25.0.2.
+1. Otevřete příkazový řádek.
+2. Hru spusťte pomocí příkazu:
+
+```bash
+java -jar Kesl-JecnaGame.jar
+```
+
+## Načítání herních dat z vlastního JSON souboru skrze InteliJ Idea
+- Hru lze načítat z vlastního JSON souboru.
+- Je poté nutné hru znovu zkompilovat do JAR souboru pro spuštění.
+- JSON musí dodržet **formát původního souboru** (např. správný datový typ: String, Array, Object).  
 - Umístěte vlastní JSON do složky `resources` a ve třídě `Game` upravte vstupní parametr metody:
   ```java
   loadWorld("/nazevvlastniho.json");
+  ```
 ![alt text](https://github.com/mk676941/Kesl---Game/blob/master/resourcepath.png)
