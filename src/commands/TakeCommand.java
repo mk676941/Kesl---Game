@@ -51,7 +51,7 @@ public class TakeCommand implements Command {
         } else {
             //kontrola kapacity inventare
             if (player.isInventoryFull()) {
-                System.out.println("Máš plný intentář. Odlož si u nekterého z NPC nejaký item z tvého intentáře.");
+                System.out.println("Máš plný intentář. Odlož si v některé z místností nejaký item z tvého intentáře.");
             } else {
                 //ulozeni itemu do inventare hrace, odebrani itemu z inventare mistnosti
                 world.getRoom(player.getCurrentRoom()).removeItem(item);
